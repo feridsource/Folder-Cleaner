@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\exploded-aar\com.nhaarman.listviewanimations\lib-core\3.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="acf66033b1418ccf9e15c8e77750981e4809c4ea">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\pre-dexed\debug\classes-9c836697b51b6b4a99ed9be04367f6d2de77489d.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e1fa5e1123997a55e3ed65b44892993ff4b58cfe">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\pre-dexed\debug\classes-bb29be04b72e517f800842a923234d9f289be708.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\pre-dexed\debug\library-2.4.0-25eedfdb65bb54e4f591c701e6796d82a016cc02.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="4486e953d1f35f8ccab098b1dd67146366d5f731">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\pre-dexed\debug\classes-e924c30604d73cc16df66ea8a82e681a303c91d2.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\22.2.1\support-annotations-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="61a0ff5c29295ec56d7e0bd3d25d95dbf71b4b2b">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\pre-dexed\debug\support-annotations-22.2.1-47f15530be0c1f41c4f2ac1dcbe2fe6579cebf37.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\libs\internal_impl-22.2.1.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="c471eaaba13ff64f6e0383d1c30a9cdc9a97efeb">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\pre-dexed\debug\internal_impl-22.2.1-58b0eacfa21934b95e6377b92c762c4eeaf1499b.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\exploded-aar\com.nhaarman.listviewanimations\lib-manipulation\3.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="5660e4bf78904137e90e62a5d4cc2e987258f02c">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\pre-dexed\debug\classes-f8e0e02b636bb0295d3efe922d5840ddc4cc5bac.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-v4\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="f8efd0096475e0daf054267b61544e10dc776503">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\pre-dexed\debug\classes-b8e780951c7afe70583bd80b397c6c56a1395812.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\exploded-aar\com.android.support\design\22.2.1\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="1821601ddbec5ff125653097812823388700af74">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\pre-dexed\debug\classes-b4a51a39afac67b13f2bfa60cc7a07790ac05143.jar" />
+    </item>
+    <item
+        jar="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\exploded-aar\com.nhaarman.listviewanimations\lib-core-slh\3.1.0\jars\classes.jar"
+        jumboMode="false"
+        revision="22.0.1"
+        sha1="49223278ec2ede1d05d00868c5ce3e077b4016f8">
+        <dex dex="C:\Users\vito\AndroidStudioProjects\Folder Cleaner\app\build\intermediates\pre-dexed\debug\classes-9465247347c84a69068c360dbcececd5b6ed066b.jar" />
+    </item>
+
+</items>
