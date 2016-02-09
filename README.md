@@ -1,6 +1,6 @@
 # Folder Cleaner
 
-This is an open source practical widget for frequent contacts.
+This is an open source app for cleaning unwanted files and folders.
 
 Copyright (C) 2015 Ferid Cafer
 
