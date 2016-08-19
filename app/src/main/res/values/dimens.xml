@@ -1,7 +1,5 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="activity_horizontal_margin">16dp</dimen>
-    <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
 
     <!-- text sizes -->
@@ -21,5 +19,7 @@
     <dimen name="drop_shadow_height">8dp</dimen>
     <dimen name="secondary_toolbar_height">72dp</dimen>
     <dimen name="secondary_toolbar_heightX2">144dp</dimen>
+
+    <dimen name="widget_size">64dp</dimen>
 
 </resources>

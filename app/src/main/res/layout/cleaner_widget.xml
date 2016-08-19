@@ -5,8 +5,8 @@
 
     <ImageView
         android:id="@+id/backgroundImage"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/widget_size"
+        android:layout_height="@dimen/widget_size"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/circle"
