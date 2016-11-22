@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grey">
+
+    <include
+        android:id="@+id/toolbar"
+        layout="@layout/toolbar"/>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="@dimen/secondary_toolbar_height">
+
+        <ListView
+            android:id="@+id/list"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingTop="@dimen/default_margin"
+            android:dividerHeight="0dp"
+            android:divider="@null"
+            android:fastScrollEnabled="true"
+            android:drawSelectorOnTop="true"
+            android:clipToPadding="false"/>
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/drop_shadow_height"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="@dimen/secondary_toolbar_height"
+        android:background="@drawable/drop_shadow"
+        android:alpha="0.5" />
+
+    <RelativeLayout
+        android:id="@+id/secondaryToolbarLayout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/secondary_toolbar_heightX2"
+        android:layout_below="@+id/toolbar">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/secondary_toolbar_height"
+            android:background="@color/colorPrimary">
+
+            <TextView
+                android:id="@+id/textViewSize"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_centerHorizontal="true"
+                android:layout_margin="@dimen/default_margin"
+                android:textColor="@color/white"
+                android:textSize="@dimen/text_size_large"
+                android:fontFamily="@string/fontFamilyMedium"
+                android:text="@string/emptySize"/>
+
+        </RelativeLayout>
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/actionButtonDelete"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentLeft="true"
+            android:layout_margin="16dp"
+            app:srcCompat="@drawable/ic_delete"
+            app:elevation="4dp"
+            app:borderWidth="0dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -10,6 +10,8 @@
 
         <!-- components -->
         <item name="android:dialogTheme">@style/Theme.AppCompat.Light.Dialog</item>
+
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
 </resources>

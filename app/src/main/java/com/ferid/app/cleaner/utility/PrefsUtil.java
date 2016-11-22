@@ -146,7 +146,7 @@ public class PrefsUtil {
      * @return ArrayList<String>
      */
     public synchronized static ArrayList<String> readCleaningList(Context context) {
-        ArrayList<String> tmpList = new ArrayList<String>();
+        ArrayList<String> tmpList = new ArrayList<>();
         try {
             String tmpPath = getPathPrefix() + context.getString(R.string.pref_cleaner);
             File file = new File(tmpPath);
@@ -173,7 +173,7 @@ public class PrefsUtil {
      * @param initialCleanList
      */
     private static void makeSelfHealing(Context context, ArrayList<String> initialCleanList) {
-        ArrayList<String> tmp = new ArrayList<String>();
+        ArrayList<String> tmp = new ArrayList<>();
         for (String path : initialCleanList) {
             File file = new File(PrefsUtil.getExplorerRootPath() + path);
             if (file.exists()) {
@@ -195,10 +195,7 @@ public class PrefsUtil {
      */
     public static boolean isValidFolder(String str) {
         if (!str.contains("/.")
-                && !str.startsWith("/Android")
-                && !str.startsWith("/cleaner_widget")
-                && !str.startsWith("/frequent_contacts_widget")
-                && !str.startsWith("/attendance_taker")) {
+                && !str.startsWith("/Android")) {
 
             return true;
         } else {

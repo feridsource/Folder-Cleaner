@@ -27,7 +27,9 @@ import android.view.Gravity;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
+import com.ferid.app.cleaner.MainActivity;
 import com.ferid.app.cleaner.R;
+import com.ferid.app.cleaner.SplashActivity;
 import com.ferid.app.cleaner.utility.ExplorerUtility;
 import com.ferid.app.cleaner.utility.PrefsUtil;
 
@@ -55,7 +57,7 @@ public class CleanerWidget extends AppWidgetProvider {
         this.context = context;
         this.appWidgetManager = appWidgetManager;
 
-        remoteViews = new RemoteViews(context.getPackageName(), R.layout.cleaner_widget);
+        remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_cleaner);
         thisWidget = new ComponentName(context, CleanerWidget.class);
 
         getFolderSize();
@@ -66,7 +68,7 @@ public class CleanerWidget extends AppWidgetProvider {
         this.context = context;
         AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
         this.appWidgetManager = appWidgetManager;
-        remoteViews = new RemoteViews(context.getPackageName(), R.layout.cleaner_widget);
+        remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_cleaner);
         thisWidget = new ComponentName(context, CleanerWidget.class);
 
         if (remoteViews != null) {
@@ -90,7 +92,14 @@ public class CleanerWidget extends AppWidgetProvider {
      * Delete items
      */
     private void cleanSelectedFolders() {
-        new CleanSelectedFolders().execute(getCleaningPaths());
+        ArrayList<String> cleaningPaths = getCleaningPaths();
+        if (!cleaningPaths.isEmpty()) {
+            new CleanSelectedFolders().execute(cleaningPaths);
+        } else {
+            Intent intent = new Intent(context, SplashActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
+        }
     }
 
     private void getFolderSize() {

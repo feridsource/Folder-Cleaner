@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="blackish">#212121</color>
-    <color name="darkGray">#727272</color>
-    <color name="white">#ffffff</color>
+    <color name="darkGrey">#727272</color>
     <color name="grey">#b6b6b6</color>
     <color name="lightGrey">#efefef</color>
     <color name="smoothWhite">#FCF9F9</color>
+    <color name="white">#ffffff</color>
     <color name="transparent">#00000000</color>
 
     <color name="colorPrimary">#607D8B</color>
@@ -13,6 +13,6 @@
     <color name="colorAccent">#CDDC39</color>
 
     <color name="primary_text">@color/blackish</color>
-    <color name="secondary_text">@color/darkGray</color>
+    <color name="secondary_text">@color/darkGrey</color>
     <color name="divider_colour">@color/grey</color>
 </resources>

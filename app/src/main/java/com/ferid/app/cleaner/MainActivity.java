@@ -59,11 +59,11 @@ public class MainActivity extends AppCompatActivity {
     //listViewExplorer elements
     private ListView listViewExplorer;
     private ExplorerAdapter adapterExplorer;
-    private ArrayList<Explorer> arrayListExplorer = new ArrayList<Explorer>();
+    private ArrayList<Explorer> arrayListExplorer = new ArrayList<>();
     //fill all folders
-    private ArrayList<Explorer> allPaths = new ArrayList<Explorer>();
+    private ArrayList<Explorer> allPaths = new ArrayList<>();
     //used to save cleaning listViewExplorer
-    private ArrayList<String> cleaningPaths = new ArrayList<String>();
+    private ArrayList<String> cleaningPaths = new ArrayList<>();
 
     //components
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.explorer);
+        setContentView(R.layout.activity_main);
 
         context = this;
 
@@ -175,8 +175,9 @@ public class MainActivity extends AppCompatActivity {
                     if (partPath != null && partPath.length > 1) {
                         //exclude hidden folders and files
                         if (PrefsUtil.isValidFolder(partPath[1])) {
+                            String folderName = partPath[1].substring(1);
                             explorer = new Explorer();
-                            explorer.setPath(partPath[1]);
+                            explorer.setPath(folderName);
                             explorer.setSize(ExplorerUtility.getFileSize(file));
 
                             allPaths.add(explorer);

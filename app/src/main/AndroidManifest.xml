@@ -12,14 +12,16 @@
         android:theme="@style/AppTheme" >
 
         <activity
-            android:name="com.ferid.app.cleaner.MainActivity"
-            android:label="@string/app_name">
+            android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".MainActivity"
+            android:label="@string/app_name"/>
 
         <receiver
             android:name="com.ferid.app.cleaner.widget.CleanerWidget"

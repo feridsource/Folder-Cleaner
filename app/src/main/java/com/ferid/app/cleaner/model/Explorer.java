@@ -32,12 +32,6 @@ public class Explorer implements Serializable {
         size = 0.0;
     }
 
-    public Explorer(String path) {
-        this.path = path;
-        toClean = false;
-        size = 0.0;
-    }
-
     public String getPath() {
         return path;
     }
