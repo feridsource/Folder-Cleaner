@@ -375,9 +375,6 @@ public class MainActivity extends AppCompatActivity {
 
             refresh();
 
-            //update widget
-            updateCleanerWidget();
-
             Snackbar.make(listViewExplorer, getString(R.string.cleaned), Snackbar.LENGTH_SHORT).show();
         }
     }
