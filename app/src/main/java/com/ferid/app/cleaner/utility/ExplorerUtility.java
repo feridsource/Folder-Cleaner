@@ -34,7 +34,7 @@ public class ExplorerUtility {
         double sum = 0.0;
 
         for (String path : cleaningPaths) {
-            file = new File(PrefsUtil.getExplorerRootPath() + path);
+            file = new File(PrefsUtil.getExplorerRootPath() + "/" + path);
             if (file.exists()) {
                 sum += getFileSize(file);
             }
@@ -81,7 +81,7 @@ public class ExplorerUtility {
         File directory;
 
         for (String path : cleaningPaths) {
-            directory = new File(PrefsUtil.getExplorerRootPath() + path);
+            directory = new File(PrefsUtil.getExplorerRootPath() + "/" + path);
             if (directory.exists()) {
                 deleteRecursively(directory.listFiles());
             }

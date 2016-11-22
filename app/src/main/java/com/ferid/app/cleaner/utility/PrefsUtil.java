@@ -26,10 +26,10 @@ import com.ferid.app.cleaner.enums.SortingType;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
+import java.io.IOException;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Created by Ferid Cafer on 11/16/2015.
@@ -110,34 +110,34 @@ public class PrefsUtil {
     }
 
     /**
-     * Get path to write.<br />
-     * Initially creates the necessary folder
-     * @return
-     */
-    private static String getPathPrefix() {
-        String path = Environment.getExternalStorageDirectory() + "/cleaner_widget/";
-        // create a File object for the parent directory
-        File directory = new File(path);
-        // have the object build the directory structure, if needed.
-        directory.mkdirs();
-
-        return path;
-    }
-
-    /**
      * Write cleaning list
      * @param list ArrayList<String>
      */
     public synchronized static void writeCleaningList(Context context, ArrayList<String> list) {
+        FileOutputStream outputStream = null;
+
+        StringBuffer sb = new StringBuffer();
+        for (int i = 0; i < list.size(); i++) {
+            if (i > 0) {
+                sb.append(",");
+            }
+            sb.append(list.get(i));
+        }
+
         try {
-            String tempPath = getPathPrefix() + context.getString(R.string.pref_cleaner);
-            File file = new File(tempPath);
-            ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(file));
-            oos.writeObject(list);
-            oos.flush();
-            oos.close();
+            outputStream = context.openFileOutput(context.getString(R.string.list_file_name),
+                    Context.MODE_PRIVATE);
+            outputStream.write(sb.toString().getBytes());
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (outputStream != null) {
+                try {
+                    outputStream.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 
@@ -147,16 +147,28 @@ public class PrefsUtil {
      */
     public synchronized static ArrayList<String> readCleaningList(Context context) {
         ArrayList<String> tmpList = new ArrayList<>();
+        FileInputStream fin = null;
+
         try {
-            String tmpPath = getPathPrefix() + context.getString(R.string.pref_cleaner);
-            File file = new File(tmpPath);
-            if (file.exists()) {
-                ObjectInputStream ois = new ObjectInputStream(new FileInputStream(file));
-                tmpList = (ArrayList<String>) ois.readObject();
-                ois.close();
+            fin = context.openFileInput(context.getString(R.string.list_file_name));
+            int c;
+            StringBuilder sb = new StringBuilder();
+            while ((c = fin.read()) != -1) {
+                sb.append(Character.toString((char)c));
+            }
+            if (!sb.toString().equals("")) {
+                tmpList.addAll(Arrays.asList(sb.toString().split(",")));
             }
         } catch (Exception e) {
             e.printStackTrace();
+        } finally {
+            if (fin != null) {
+                try {
+                    fin.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
         }
 
         makeSelfHealing(context, tmpList);
@@ -166,7 +178,7 @@ public class PrefsUtil {
     }
 
     /**
-     * If folder has been removed or renamed,
+     * If folder has been removed manually or renamed,
      * remove the item from the cleaning list
      * this is a kind of self healing
      * @param context
@@ -175,16 +187,19 @@ public class PrefsUtil {
     private static void makeSelfHealing(Context context, ArrayList<String> initialCleanList) {
         ArrayList<String> tmp = new ArrayList<>();
         for (String path : initialCleanList) {
-            File file = new File(PrefsUtil.getExplorerRootPath() + path);
+            File file = new File(PrefsUtil.getExplorerRootPath() + "/" + path);
             if (file.exists()) {
                 tmp.add(path);
             }
         }
 
-        initialCleanList.clear();
-        initialCleanList.addAll(tmp);
+        //if any changes have happened, write the newer one
+        if (!(initialCleanList.containsAll(tmp) && tmp.containsAll(initialCleanList))) {
+            PrefsUtil.writeCleaningList(context, tmp);
 
-        PrefsUtil.writeCleaningList(context, tmp);
+            initialCleanList.clear();
+            initialCleanList.addAll(tmp);
+        }
     }
 
     /**
