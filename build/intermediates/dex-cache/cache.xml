@@ -61,7 +61,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="10e85889a696894c982ceca9a4e47e8a4f91135c">
+        sha1="2ce3bc58cedb5e5f65b4897e1c36f8d24f825e3d">
         <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_b8ecd21a3f35a074a3c4d8eed0cbbe53990ebae0\classes.dex" />
     </item>
     <item
@@ -88,7 +88,7 @@
         jumboMode="true"
         optimize="true"
         revision="25.0.0"
-        sha1="b89a12193cabb00b945fe4a356bbf33218b51f2e">
+        sha1="489b05696c8da3eeadaf3af229a6ea0e9f34cfc8">
         <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_7fae21db817214035698496d09ebdf79c845af73\classes.dex" />
     </item>
     <item
