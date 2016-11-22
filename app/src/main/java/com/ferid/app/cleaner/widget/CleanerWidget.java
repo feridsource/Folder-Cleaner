@@ -27,7 +27,6 @@ import android.view.Gravity;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
-import com.ferid.app.cleaner.MainActivity;
 import com.ferid.app.cleaner.R;
 import com.ferid.app.cleaner.SplashActivity;
 import com.ferid.app.cleaner.utility.ExplorerUtility;

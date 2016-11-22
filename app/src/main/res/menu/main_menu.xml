@@ -7,13 +7,13 @@
         android:title="@string/deselectAll"
         android:icon="@drawable/ic_clear_all"
         android:orderInCategory="2"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
 
     <item
         android:id="@+id/menu_change_sorting"
         android:title="@string/changeSorting"
         android:icon="@drawable/ic_sort"
         android:orderInCategory="1"
-        app:showAsAction="always"/>
+        app:showAsAction="ifRoom"/>
 
 </menu>

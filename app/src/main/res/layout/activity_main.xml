@@ -38,7 +38,6 @@
         android:alpha="0.5" />
 
     <RelativeLayout
-        android:id="@+id/secondaryToolbarLayout"
         android:layout_width="match_parent"
         android:layout_height="@dimen/secondary_toolbar_heightX2"
         android:layout_below="@+id/toolbar">
@@ -68,7 +67,7 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
-            android:layout_margin="16dp"
+            android:layout_margin="@dimen/fab_margin"
             app:srcCompat="@drawable/ic_delete"
             app:elevation="4dp"
             app:borderWidth="0dp"/>

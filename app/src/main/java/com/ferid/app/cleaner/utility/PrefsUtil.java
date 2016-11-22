@@ -79,7 +79,7 @@ public class PrefsUtil {
         if (sPrefs != null) {
             SharedPreferences.Editor editor = sPrefs.edit();
             editor.putInt(context.getString(R.string.sorting_type), value.getValue());
-            editor.commit();
+            editor.apply();
         }
     }
 
