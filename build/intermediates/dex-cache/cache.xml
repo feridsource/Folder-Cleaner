@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="bc7e99e8d0fc279a05aa91378530f467ad62d443">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-ui-25.0.1_e9cc66cc23c74652866f2abbecd66909a45dd244\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\.gradle\caches\modules-2\files-2.1\com.nineoldandroids\library\2.4.0\e9b63380f3a242dbdbf103a2355ad7e43bad17cb\library-2.4.0.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\library-2.4.0_6eff6466aea0b1b26c941ff5988da2f4a38a647b\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\animated-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="772bed2d992b67b9d0327f766cc95cd63031dcd3">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-animated-vector-drawable-25.0.1_9eddc45147c7e1cac62e41f6a7d064b8c12aba69\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3af8cc51ef7088e56f132780da8c0bd858b6a6ad">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_cdc59388206cff9dbc127ef9586afec2abd0138e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.nhaarman.listviewanimations\lib-core\3.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="acf66033b1418ccf9e15c8e77750981e4809c4ea">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.nhaarman.listviewanimations-lib-core-3.1.0_7d56646b78a9e1e06589137a9f124b834dc9db50\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.nhaarman.listviewanimations\lib-manipulation\3.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="5660e4bf78904137e90e62a5d4cc2e987258f02c">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.nhaarman.listviewanimations-lib-manipulation-3.1.0_566bd5f0d963ed486eac409189ca0f27fbb61458\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c5b7145fb34779b6639147b8f2f8dd77c0db771b">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_9cba06bd2d0b582348445e12a5dd55d5a78a2abb\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.nhaarman.listviewanimations\lib-core-slh\3.1.0\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="49223278ec2ede1d05d00868c5ce3e077b4016f8">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.nhaarman.listviewanimations-lib-core-slh-3.1.0_f6316b884cf3278e6ca7857b110d78683bfb1628\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\recyclerview-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="297d4bcf6ed4e747a1bf7d0d094a2d911a8d3a8e">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-recyclerview-v7-25.0.1_c274dca4e646484c3b668e0a2862a40774f0d8aa\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c0bd6ffb002a85b5e7cad29f8558d1cc59539679">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_10955f3f92f3de66e603b193d93ea82d3b387f7e\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="9850b7245065c1e23a087568b94bb54d5edf4b4d">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run-bootstrap_7fae21db817214035698496d09ebdf79c845af73\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-core-utils\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="00d4c8eebf2b681073c72a26bd0849549e51c7cb">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-core-utils-25.0.1_703b550d808d3995b0804bf370df640b71475695\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\AppData\Local\Android\sdk\extras\android\m2repository\com\android\support\support-annotations\25.0.1\support-annotations-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="a09194311f8f89c3e6db09d79f50897a889d615e">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\support-annotations-25.0.1_1cd9e1b1ba06af5699c96a0de2544264b0c7670d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-v4\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="d7c42c80f6509b9ea4db28ca7859ffae08ec5741">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-v4-25.0.1_e3fe6e4a45dbebbcac2178bbb4173bec9dd755f8\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-fragment\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="26c6eef571592c91f29e56fda0bac73321de0c92">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-fragment-25.0.1_d7e89224a2dd5b0174efe1291a1a94d76af4eedd\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="4a4d265484b632181e77349525420c1b2659684d">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\instant-run_b8ecd21a3f35a074a3c4d8eed0cbbe53990ebae0\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\transition\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="c1b6ab157e8e12cb08b9ee82bb5e3c5d22632eb3">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-transition-25.0.1_accea4e6ac97df947fc6d3448b4a4b6e2de7cd83\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-vector-drawable\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="b24e1c688744078e1fa833ffadf696794761bbe5">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-vector-drawable-25.0.1_a897d7d35090a0e44b8c25d727b1c92c0fe64d95\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f83b00041ecfba705603fec40363416c7de69719">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_0dad72d1fa9d13443b2eb6ef35282e8b94f1a01d\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-media-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="6a1479afe9f1b3645e1cd9a87318976893472818">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-media-compat-25.0.1_f6f0bd4fb65a6ce5874c6bbac2a04327b42e38f7\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\appcompat-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="f7ac4b327fdb9e2ee386f5adc46164927658de4b">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-appcompat-v7-25.0.1_320d1c6309ca047660d9b75edb388cdd81942dcf\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\cardview-v7\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="1108575c7dc7b7f5b378b3290ac90de81a9b8830">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-cardview-v7-25.0.1_956d84dc4b7dd03700b1aed3d603696db9dc956f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-core-ui\25.0.1\jars\libs\internal_impl-25.0.1.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="e5343c9d19cb19ff55f6b268c7f3fe8c9d224f6f">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\internal_impl-25.0.1_74ac93456fdbacfeabbde83720dd54677728486f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\design\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="3b236883e0df6002cabb01ce57d00a5b1e5de610">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-design-25.0.1_0aa243cbb7367ebb0c4b5b659578fa9afac5ad3f\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\exploded-aar\com.android.support\support-compat\25.0.1\jars\classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.1"
+        sha1="51eba4a4dd73044f90a9d58dd7ca34adbebfcf4e">
+        <dex dex="C:\Users\ferid.cafer\Documents\MyProjects\Folder-Cleaner\app\build\intermediates\transforms\dex\debug\folders\1000\10\com.android.support-support-compat-25.0.1_defc4cc82cd24584457bc4b475f69959978995dc\classes.dex" />
+    </item>
+
+</items>
