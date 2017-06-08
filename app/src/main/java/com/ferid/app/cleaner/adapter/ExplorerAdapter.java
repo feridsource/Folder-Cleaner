@@ -18,6 +18,7 @@ package com.ferid.app.cleaner.adapter;
 
 import android.app.Activity;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,16 +73,16 @@ public class ExplorerAdapter extends ArrayAdapter<Explorer> {
 
         if (item.isToClean()) {
             viewHolder.checkBox.setImageResource(R.drawable.abc_btn_check_to_on_mtrl_015);
-            viewHolder.checkBox.setColorFilter(context.getResources().getColor(R.color.colorAccent));
+            viewHolder.checkBox.setColorFilter(ContextCompat.getColor(context, R.color.colorAccent));
         } else {
             viewHolder.checkBox.setImageResource(R.drawable.abc_btn_check_to_on_mtrl_000);
-            viewHolder.checkBox.setColorFilter(context.getResources().getColor(R.color.grey));
+            viewHolder.checkBox.setColorFilter(ContextCompat.getColor(context, R.color.grey));
         }
 
         return convertView;
     }
 
-    public static class ViewHolder {
+    private static class ViewHolder {
         TextView path;
         TextView size;
         ImageView checkBox;

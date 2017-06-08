@@ -96,7 +96,7 @@ public class PrefsUtil {
      * @return
      */
     public static String getDecimalFormat(Context context, double size) {
-        String formattedSize = "";
+        String formattedSize;
         DecimalFormat decimalFormat = new DecimalFormat("0.0");
 
         if (size < 1000) {
@@ -209,12 +209,8 @@ public class PrefsUtil {
      * @return valid or not
      */
     public static boolean isValidFolder(String str) {
-        if (!str.contains("/.")
-                && !str.startsWith("/Android")) {
-
-            return true;
-        } else {
-            return false;
-        }
+        //hide hidden and app storage folders
+        return !str.contains("/.")
+                && !str.startsWith("/Android");
     }
 }

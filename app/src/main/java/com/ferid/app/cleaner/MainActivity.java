@@ -172,7 +172,7 @@ public class MainActivity extends AppCompatActivity {
                 if (file.isDirectory()) {
                     String[] partPath = file.getPath().split("0");
                     //exclude the root content
-                    if (partPath != null && partPath.length > 1) {
+                    if (partPath.length > 1) {
                         //exclude hidden folders and files
                         if (PrefsUtil.isValidFolder(partPath[1])) {
                             String folderName = partPath[1].substring(1);

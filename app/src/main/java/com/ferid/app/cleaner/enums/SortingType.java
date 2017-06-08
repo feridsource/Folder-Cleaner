@@ -25,7 +25,7 @@ public enum SortingType {
 
     private final int value;
 
-    private SortingType(int value) {
+    SortingType(int value) {
         this.value = value;
     }
     public int getValue() {
