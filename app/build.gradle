@@ -8,8 +8,8 @@ android {
         applicationId "com.ferid.app.cleaner"
         minSdkVersion 16
         targetSdkVersion 25
-        versionCode 14
-        versionName "3.0.1"
+        versionCode 15
+        versionName "3.1.0"
 
         vectorDrawables.useSupportLibrary = true
     }
@@ -21,17 +21,16 @@ android {
     }
 }
 
+def supportLibVersion = "25.3.1"
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 
     //support lib
-    compile 'com.android.support:appcompat-v7:25.3.1'
-
+    compile "com.android.support:appcompat-v7:$supportLibVersion"
     //design
-    compile 'com.android.support:design:25.3.1'
-
+    compile "com.android.support:design:$supportLibVersion"
     //card view
-    compile 'com.android.support:cardview-v7:25.3.1'
+    compile "com.android.support:cardview-v7:$supportLibVersion"
 
     //list view animations
     compile 'com.nineoldandroids:library:2.4.0'

@@ -61,7 +61,7 @@ public class ExplorerUtility {
      * @param directory File
      * @return long
      */
-    public static long getFolderSizeRecursively(File directory) {
+    private static long getFolderSizeRecursively(File directory) {
         long length = 0;
         for (File file : directory.listFiles()) {
             if (file.isFile()) {

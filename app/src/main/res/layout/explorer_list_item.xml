@@ -27,7 +27,9 @@
                 android:layout_height="@dimen/icon_folder_size"
                 android:layout_centerVertical="true"
                 android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_marginLeft="@dimen/default_margin"
+                android:layout_marginStart="@dimen/default_margin"
                 app:srcCompat="@drawable/ic_folder"
                 android:tint="@color/grey"/>
 
@@ -36,7 +38,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_toRightOf="@+id/imageViewFolder"
+                android:layout_toEndOf="@+id/imageViewFolder"
                 android:layout_toLeftOf="@+id/checkBox"
+                android:layout_toStartOf="@+id/checkBox"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="@dimen/default_margin"
                 android:layout_marginRight="@dimen/default_margin"
@@ -69,7 +73,10 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
-                android:layout_marginRight="@dimen/default_margin"/>
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="@dimen/default_margin"
+                android:layout_marginEnd="@dimen/default_margin"
+                android:contentDescription="@null"/>
 
         </RelativeLayout>
 

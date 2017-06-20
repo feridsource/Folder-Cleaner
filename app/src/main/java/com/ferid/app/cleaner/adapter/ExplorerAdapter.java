@@ -72,11 +72,11 @@ public class ExplorerAdapter extends ArrayAdapter<Explorer> {
         viewHolder.size.setText(PrefsUtil.getDecimalFormat(context, item.getSize()));
 
         if (item.isToClean()) {
-            viewHolder.checkBox.setImageResource(R.drawable.abc_btn_check_to_on_mtrl_015);
+            viewHolder.checkBox.setImageResource(R.drawable.ic_check_box);
             viewHolder.checkBox.setColorFilter(ContextCompat.getColor(context, R.color.colorAccent));
         } else {
-            viewHolder.checkBox.setImageResource(R.drawable.abc_btn_check_to_on_mtrl_000);
-            viewHolder.checkBox.setColorFilter(ContextCompat.getColor(context, R.color.grey));
+            viewHolder.checkBox.setImageResource(R.drawable.ic_check_box_blank);
+            viewHolder.checkBox.setColorFilter(ContextCompat.getColor(context, R.color.darkGrey));
         }
 
         return convertView;
