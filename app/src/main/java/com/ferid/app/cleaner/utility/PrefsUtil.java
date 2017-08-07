@@ -116,7 +116,7 @@ public class PrefsUtil {
     public synchronized static void writeCleaningList(Context context, ArrayList<String> list) {
         FileOutputStream outputStream = null;
 
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         for (int i = 0; i < list.size(); i++) {
             if (i > 0) {
                 sb.append(",");

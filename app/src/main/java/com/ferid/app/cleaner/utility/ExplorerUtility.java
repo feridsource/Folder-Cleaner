@@ -63,13 +63,16 @@ public class ExplorerUtility {
      */
     private static long getFolderSizeRecursively(File directory) {
         long length = 0;
-        for (File file : directory.listFiles()) {
-            if (file.isFile()) {
-                length += file.length();
-            } else {
-                length += getFolderSizeRecursively(file);
+        if (directory.listFiles() != null) {
+            for (File file : directory.listFiles()) {
+                if (file.isFile()) {
+                    length += file.length();
+                } else {
+                    length += getFolderSizeRecursively(file);
+                }
             }
         }
+
         return length;
     }
 
