@@ -7,8 +7,8 @@ android {
         applicationId "com.ferid.app.cleaner"
         minSdkVersion 16
         targetSdkVersion 27
-        versionCode 16
-        versionName "3.1.1"
+        versionCode 17
+        versionName "3.1.2"
 
         vectorDrawables.useSupportLibrary = true
     }
