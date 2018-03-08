@@ -28,3 +28,6 @@
 
 # List view animations
 -dontwarn com.nhaarman.listviewanimations.**
+
+# deobfuscate
+-printmapping mapping.txt
