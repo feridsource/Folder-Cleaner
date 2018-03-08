@@ -56,9 +56,9 @@ public class ExplorerAdapter extends ArrayAdapter<Explorer> {
             convertView = inflater.inflate(layoutResId, parent, false);
             viewHolder = new ViewHolder();
 
-            viewHolder.path = (TextView) convertView.findViewById(R.id.path);
-            viewHolder.size = (TextView) convertView.findViewById(R.id.size);
-            viewHolder.checkBox = (ImageView) convertView.findViewById(R.id.checkBox);
+            viewHolder.path = convertView.findViewById(R.id.path);
+            viewHolder.size = convertView.findViewById(R.id.size);
+            viewHolder.checkBox = convertView.findViewById(R.id.checkBox);
 
             convertView.setTag(viewHolder);
         } else {

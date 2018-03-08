@@ -1,13 +1,12 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
+    compileSdkVersion 27
 
     defaultConfig {
         applicationId "com.ferid.app.cleaner"
         minSdkVersion 16
-        targetSdkVersion 25
+        targetSdkVersion 27
         versionCode 16
         versionName "3.1.1"
 
@@ -21,7 +20,8 @@ android {
     }
 }
 
-def supportLibVersion = "25.3.1"
+def supportLibVersion = "27.1.0"
+
 dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
 

@@ -78,13 +78,13 @@ public class MainActivity extends AppCompatActivity {
 
         context = this;
 
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        textViewSize = (TextView) findViewById(R.id.textViewSize);
-        actionButtonDelete = (FloatingActionButton) findViewById(R.id.actionButtonDelete);
+        textViewSize = findViewById(R.id.textViewSize);
+        actionButtonDelete = findViewById(R.id.actionButtonDelete);
 
-        listViewExplorer = (ListView) findViewById(R.id.list);
+        listViewExplorer = findViewById(R.id.list);
         adapterExplorer = new ExplorerAdapter(context,
                 R.layout.explorer_list_item, arrayListExplorer);
 
@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
 
         setOnClickListeners();
 
-        swipeRefreshLayout = (SwipeRefreshLayout) findViewById(R.id.swipeRefreshLayout);
+        swipeRefreshLayout = findViewById(R.id.swipeRefreshLayout);
         swipeRefreshLayout.setColorSchemeResources(android.R.color.holo_blue_bright,
                 android.R.color.holo_green_light,
                 android.R.color.holo_orange_light,
