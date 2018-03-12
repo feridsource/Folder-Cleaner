@@ -5,12 +5,10 @@ android {
 
     defaultConfig {
         applicationId "com.ferid.app.cleaner"
-        minSdkVersion 16
+        minSdkVersion 21
         targetSdkVersion 27
-        versionCode 17
-        versionName "3.1.2"
-
-        vectorDrawables.useSupportLibrary = true
+        versionCode 18
+        versionName "3.2.0"
     }
     buildTypes {
         release {

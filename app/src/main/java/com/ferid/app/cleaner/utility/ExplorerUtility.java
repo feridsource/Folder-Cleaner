@@ -18,6 +18,8 @@ package com.ferid.app.cleaner.utility;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Created by Ferid Cafer on 11/16/2015.
@@ -93,9 +95,13 @@ public class ExplorerUtility {
 
     /**
      * Search through directories and delete recursively
+     * @param files array of files to iterate recursively
      */
     private static void deleteRecursively(File[] files) {
-        for (File file : files) {
+        Iterable<File> filesList = Arrays.asList(files);
+
+        for (Iterator<File> iterateFiles = filesList.iterator(); iterateFiles.hasNext();) {
+            File file = iterateFiles.next();
             if (file.exists()) {
                 if (file.isDirectory()) {
                     //continue to delete files recursively
