@@ -102,12 +102,14 @@ public class ExplorerUtility {
 
         for (Iterator<File> iterateFiles = filesList.iterator(); iterateFiles.hasNext();) {
             File file = iterateFiles.next();
-            if (file.isDirectory()) {
-                //delete files recursively
-                recursiveDelete(file);
-            } else {
-                //delete file
-                file.delete();
+            if (file.exists()) {
+                if (file.isDirectory()) {
+                    //delete files recursively
+                    recursiveDelete(file);
+                } else {
+                    //delete file
+                    file.delete();
+                }
             }
         }
     }
@@ -117,14 +119,16 @@ public class ExplorerUtility {
      * @param file directory to iterate recursively or file
      */
     private static void recursiveDelete(File file) {
-        if (file.isDirectory()) {
-            for (File f : file.listFiles()) {
-                //continue to delete files recursively
-                recursiveDelete(f);
+        if (file.exists()) {
+            if (file.isDirectory()) {
+                for (File f : file.listFiles()) {
+                    //continue to delete files recursively
+                    recursiveDelete(f);
+                }
             }
+            //delete file
+            file.delete();
         }
-        //delete folder
-        file.delete();
     }
 
 }
