@@ -22,14 +22,16 @@ import android.appwidget.AppWidgetProvider;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.view.Gravity;
 import android.widget.RemoteViews;
 import android.widget.Toast;
 
 import com.ferid.app.cleaner.R;
 import com.ferid.app.cleaner.SplashActivity;
-import com.ferid.app.cleaner.utility.ExplorerUtility;
+import com.ferid.app.cleaner.listeners.CleaningListener;
+import com.ferid.app.cleaner.listeners.SizeListener;
+import com.ferid.app.cleaner.tasks.CleanFoldersTask;
+import com.ferid.app.cleaner.tasks.GetFolderSizeTask;
 import com.ferid.app.cleaner.utility.PrefsUtil;
 
 import java.text.DecimalFormat;
@@ -49,6 +51,10 @@ public class CleanerWidget extends AppWidgetProvider {
     public static final String APP_TO_WID = "com.ferid.app.cleaner.widget.APP_TO_WID";
     public static final String WID_CLICKED = "com.ferid.app.cleaner.widget.WID_CLICKED";
     public static final String WIDGET_ENABLED = "android.appwidget.action.APPWIDGET_ENABLED";
+
+    //tasks
+    private CleanFoldersTask cleanFoldersTask;
+    private GetFolderSizeTask getFolderSizeTask;
 
 
     @Override
@@ -93,7 +99,9 @@ public class CleanerWidget extends AppWidgetProvider {
     private void cleanSelectedFolders() {
         ArrayList<String> cleaningPaths = getCleaningPaths();
         if (!cleaningPaths.isEmpty()) {
-            new CleanSelectedFolders().execute(cleaningPaths);
+            cleanFoldersTask = new CleanFoldersTask();
+            cleanFoldersTask.setListener(cleaningListener);
+            cleanFoldersTask.execute(cleaningPaths);
         } else {
             Intent intent = new Intent(context, SplashActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -102,7 +110,9 @@ public class CleanerWidget extends AppWidgetProvider {
     }
 
     private void getFolderSize() {
-        new GetFolderSize().execute();
+        getFolderSizeTask = new GetFolderSizeTask();
+        getFolderSizeTask.setListener(sizeListener);
+        getFolderSizeTask.execute(getCleaningPaths());
     }
 
     /**
@@ -118,47 +128,27 @@ public class CleanerWidget extends AppWidgetProvider {
     }
 
     /**
-     * Clean selected folders (cleaning list)
+     * Listening to cleaning selected folders
      */
-    private class CleanSelectedFolders extends AsyncTask<ArrayList<String>, Void, Void> {
-
+    private CleaningListener cleaningListener = new CleaningListener() {
         @Override
-        protected Void doInBackground(ArrayList<String>... params) {
-            ArrayList<String> tmpList = params[0];
-
-            ExplorerUtility.deleteExplorer(tmpList);
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            //update widget
-            new GetFolderSize().execute();
+        public void OnCompleted() {
+            //update size on the widget
+            getFolderSize();
 
             Toast toast = Toast.makeText(context, context.getString(R.string.cleaned),
                     Toast.LENGTH_SHORT);
             toast.setGravity(Gravity.CENTER, 0, 0);
             toast.show();
         }
-    }
+    };
 
     /**
-     * Update the total size of items to be deleted
+     * Listening to getting total size of folders
      */
-    private class GetFolderSize extends AsyncTask<Void, Void, Double> {
-
+    private SizeListener sizeListener = new SizeListener() {
         @Override
-        protected Double doInBackground(Void... params) {
-            return ExplorerUtility.getTotalFileSize(getCleaningPaths());
-        }
-
-        @Override
-        protected void onPostExecute(Double sum) {
-            super.onPostExecute(sum);
-
+        public void OnResult(double sum) {
             String formattedSize;
             DecimalFormat decimalFormat = new DecimalFormat("0.0");
 
@@ -175,5 +165,5 @@ public class CleanerWidget extends AppWidgetProvider {
 
             appWidgetManager.updateAppWidget(thisWidget, remoteViews);
         }
-    }
+    };
 }
