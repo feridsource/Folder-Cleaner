@@ -26,7 +26,7 @@
             android:divider="@null"
             android:fastScrollEnabled="true"
             android:drawSelectorOnTop="true"
-            android:clipToPadding="false"/>
+            android:clipToPadding="false" />
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
