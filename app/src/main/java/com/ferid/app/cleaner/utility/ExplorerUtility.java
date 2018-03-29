@@ -53,9 +53,8 @@ public class ExplorerUtility {
     public static double getFileSize(File directory) {
         double bytes = getFolderSizeRecursively(directory);
         double kilobytes = (bytes / 1024);
-        double megabytes = (kilobytes / 1024);
 
-        return megabytes;
+        return (kilobytes / 1024); //megabytes
     }
 
     /**

@@ -72,8 +72,7 @@ public class CleanerWidget extends AppWidgetProvider {
     @Override
     public void onReceive(Context context, Intent intent) {
         this.context = context;
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-        this.appWidgetManager = appWidgetManager;
+        this.appWidgetManager = AppWidgetManager.getInstance(context);
         remoteViews = new RemoteViews(context.getPackageName(), R.layout.widget_cleaner);
         thisWidget = new ComponentName(context, CleanerWidget.class);
 
