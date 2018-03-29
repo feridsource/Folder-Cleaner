@@ -75,7 +75,7 @@ public class MainActivity extends AppCompatActivity {
     private FloatingActionButton actionButtonDelete;
 
     //async tasks
-    private CleanFoldersTask cleanSelectedFoldersTask;
+    private CleanFoldersTask cleanFoldersTask;
     private GetFolderSizeTask getFolderSizeTask;
 
 
@@ -160,8 +160,8 @@ public class MainActivity extends AppCompatActivity {
         actionButtonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cleanSelectedFoldersTask = new CleanFoldersTask();
-                cleanSelectedFoldersTask.setListener(new CleaningListener() {
+                cleanFoldersTask = new CleanFoldersTask();
+                cleanFoldersTask.setListener(new CleaningListener() {
                     @Override
                     public void OnCompleted() {
                         refresh();
@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
                                 Snackbar.LENGTH_SHORT).show();
                     }
                 });
-                cleanSelectedFoldersTask.execute(cleaningPaths);
+                cleanFoldersTask.execute(cleaningPaths);
             }
         });
     }
@@ -380,8 +380,8 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         //release listeners
-        if (cleanSelectedFoldersTask != null) {
-            cleanSelectedFoldersTask.setListener(null);
+        if (cleanFoldersTask != null) {
+            cleanFoldersTask.setListener(null);
         }
 
         if (getFolderSizeTask != null) {
