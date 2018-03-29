@@ -7,8 +7,8 @@ android {
         applicationId "com.ferid.app.cleaner"
         minSdkVersion 21
         targetSdkVersion 27
-        versionCode 20
-        versionName "3.2.2"
+        versionCode 21
+        versionName "3.3.0"
     }
     buildTypes {
         release {
@@ -22,18 +22,18 @@ android {
 def supportLibVersion = "27.1.0"
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
 
     //support lib
-    compile "com.android.support:appcompat-v7:$supportLibVersion"
+    implementation "com.android.support:appcompat-v7:$supportLibVersion"
     //design
-    compile "com.android.support:design:$supportLibVersion"
+    implementation "com.android.support:design:$supportLibVersion"
     //card view
-    compile "com.android.support:cardview-v7:$supportLibVersion"
+    implementation "com.android.support:cardview-v7:$supportLibVersion"
 
     //list view animations
-    compile 'com.nineoldandroids:library:2.4.0'
-    compile 'com.nhaarman.listviewanimations:lib-core:3.1.0@aar'
-    compile 'com.nhaarman.listviewanimations:lib-manipulation:3.1.0@aar'
-    compile 'com.nhaarman.listviewanimations:lib-core-slh:3.1.0@aar'
+    implementation 'com.nineoldandroids:library:2.4.0'
+    implementation 'com.nhaarman.listviewanimations:lib-core:3.1.0@aar'
+    implementation 'com.nhaarman.listviewanimations:lib-manipulation:3.1.0@aar'
+    implementation 'com.nhaarman.listviewanimations:lib-core-slh:3.1.0@aar'
 }

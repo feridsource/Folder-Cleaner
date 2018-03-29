@@ -36,7 +36,11 @@ import android.widget.TextView;
 
 import com.ferid.app.cleaner.adapter.ExplorerAdapter;
 import com.ferid.app.cleaner.enums.SortingType;
+import com.ferid.app.cleaner.listeners.CleaningListener;
+import com.ferid.app.cleaner.listeners.SizeListener;
 import com.ferid.app.cleaner.model.Explorer;
+import com.ferid.app.cleaner.tasks.CleanFoldersTask;
+import com.ferid.app.cleaner.tasks.GetFolderSizeTask;
 import com.ferid.app.cleaner.utility.ExplorerUtility;
 import com.ferid.app.cleaner.utility.PrefsUtil;
 import com.ferid.app.cleaner.widget.CleanerWidget;
@@ -69,6 +73,10 @@ public class MainActivity extends AppCompatActivity {
     private SwipeRefreshLayout swipeRefreshLayout;
     private TextView textViewSize;
     private FloatingActionButton actionButtonDelete;
+
+    //async tasks
+    private CleanFoldersTask cleanSelectedFoldersTask;
+    private GetFolderSizeTask getFolderSizeTask;
 
 
     @Override
@@ -146,7 +154,9 @@ public class MainActivity extends AppCompatActivity {
                     adapterExplorer.notifyDataSetChanged();
 
                     //update total folder size
-                    new GetFolderSize().execute();
+                    getFolderSizeTask = new GetFolderSizeTask();
+                    getFolderSizeTask.setListener(sizeListener);
+                    getFolderSizeTask.execute(cleaningPaths);
                     //update widget
                     updateCleanerWidget();
                 }
@@ -156,7 +166,17 @@ public class MainActivity extends AppCompatActivity {
         actionButtonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                new CleanSelectedFolders().execute(cleaningPaths);
+                cleanSelectedFoldersTask = new CleanFoldersTask();
+                cleanSelectedFoldersTask.setListener(new CleaningListener() {
+                    @Override
+                    public void OnCompleted() {
+                        refresh();
+
+                        Snackbar.make(listViewExplorer, getString(R.string.cleaned),
+                                Snackbar.LENGTH_SHORT).show();
+                    }
+                });
+                cleanSelectedFoldersTask.execute(cleaningPaths);
             }
         });
     }
@@ -233,42 +253,11 @@ public class MainActivity extends AppCompatActivity {
 
         adapterExplorer.notifyDataSetChanged();
 
-        new GetFolderSize().execute();
+        getFolderSizeTask = new GetFolderSizeTask();
+        getFolderSizeTask.setListener(sizeListener);
+        getFolderSizeTask.execute(cleaningPaths);
+
         updateCleanerWidget();
-    }
-
-    /**
-     * Update cleaner widget
-     */
-    private void updateCleanerWidget() {
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-        ComponentName thisAppWidget = new ComponentName(context.getPackageName(), this.getClass().getName());
-        Intent updateWidget = new Intent(context, CleanerWidget.class);
-        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisAppWidget);
-        updateWidget.setAction(CleanerWidget.APP_TO_WID);
-        updateWidget.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
-        context.sendBroadcast(updateWidget);
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar actions click
-        switch (item.getItemId()) {
-            case R.id.menu_deselect_all:
-                deselectAll();
-                return true;
-            case R.id.menu_change_sorting:
-                new ChangeSorting().execute();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
     }
 
     private class ChangeSorting extends AsyncTask<Void, Void, Void> {
@@ -277,14 +266,10 @@ public class MainActivity extends AppCompatActivity {
         protected Void doInBackground(Void... params) {
             //get current sorting type and convert it into the next one
             SortingType sortingType = PrefsUtil.getSortingType(context).next();
+
             //sort elements
-            if (allPaths != null) {
-                if (sortingType == SortingType.ALPHABET) {
-                    Collections.sort(allPaths, new ExplorerComparator());
-                } else if (sortingType == SortingType.SIZE) {
-                    Collections.sort(allPaths, new SizeComparator());
-                }
-            }
+            sortElements(sortingType);
+
             //save the next sorting type
             PrefsUtil.setSortingType(context, sortingType);
 
@@ -322,15 +307,8 @@ public class MainActivity extends AppCompatActivity {
             if (root.exists()) {
                 searchParentFolders(root.listFiles());
 
-                //sort elements
-                SortingType sortingType = PrefsUtil.getSortingType(context);
-                if (allPaths != null) {
-                    if (sortingType == SortingType.ALPHABET) {
-                        Collections.sort(allPaths, new ExplorerComparator());
-                    } else if (sortingType == SortingType.SIZE) {
-                        Collections.sort(allPaths, new SizeComparator());
-                    }
-                }
+                //get sorting type and sort elements accordingly
+                sortElements(PrefsUtil.getSortingType(context));
 
                 //update allPaths according to cleaning paths
                 getCleaningPaths();
@@ -349,53 +327,37 @@ public class MainActivity extends AppCompatActivity {
             adapterExplorer.notifyDataSetChanged();
 
             //update total cleaning folder size
-            new GetFolderSize().execute();
+            getFolderSizeTask = new GetFolderSizeTask();
+            getFolderSizeTask.setListener(sizeListener);
+            getFolderSizeTask.execute(cleaningPaths);
 
             swipeRefreshLayout.setRefreshing(false);
         }
     }
 
     /**
-     * Clean selected folders (cleaning listViewExplorer)
+     * Sort elements with given sorting type
+     * @param sortingType SortingType
      */
-    private class CleanSelectedFolders extends AsyncTask<ArrayList<String>, Void, Void> {
-
-        @Override
-        protected Void doInBackground(ArrayList<String>... params) {
-            ArrayList<String> tmpList = params[0];
-
-            ExplorerUtility.deleteExplorer(tmpList);
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            refresh();
-
-            Snackbar.make(listViewExplorer, getString(R.string.cleaned), Snackbar.LENGTH_SHORT).show();
+    private void sortElements(SortingType sortingType) {
+        if (allPaths != null) {
+            if (sortingType == SortingType.ALPHABET) {
+                Collections.sort(allPaths, new ExplorerComparator());
+            } else if (sortingType == SortingType.SIZE) {
+                Collections.sort(allPaths, new SizeComparator());
+            }
         }
     }
 
     /**
-     * Update the total size of items to be deleted
+     * Folder size retrieving listener
      */
-    private class GetFolderSize extends AsyncTask<Void, Void, Double> {
-
+    private SizeListener sizeListener = new SizeListener() {
         @Override
-        protected Double doInBackground(Void... params) {
-            return ExplorerUtility.getTotalFileSize(cleaningPaths);
-        }
-
-        @Override
-        protected void onPostExecute(Double sum) {
-            super.onPostExecute(sum);
-
+        public void OnResult(double sum) {
             textViewSize.setText(PrefsUtil.getDecimalFormat(context, sum));
         }
-    }
+    };
 
     /**
      * Alphabetical order
@@ -418,6 +380,54 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public int compare(Explorer e1, Explorer e2) {
             return Double.compare(e2.getSize(), e1.getSize());
+        }
+    }
+
+    @Override
+    protected void onDestroy() {
+        //release listeners
+        if (cleanSelectedFoldersTask != null) {
+            cleanSelectedFoldersTask.setListener(null);
+        }
+
+        if (getFolderSizeTask != null) {
+            getFolderSizeTask.setListener(null);
+        }
+
+        super.onDestroy();
+    }
+
+    /**
+     * Update cleaner widget
+     */
+    private void updateCleanerWidget() {
+        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
+        ComponentName thisAppWidget = new ComponentName(context.getPackageName(), this.getClass().getName());
+        Intent updateWidget = new Intent(context, CleanerWidget.class);
+        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisAppWidget);
+        updateWidget.setAction(CleanerWidget.APP_TO_WID);
+        updateWidget.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+        context.sendBroadcast(updateWidget);
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.main_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar actions click
+        switch (item.getItemId()) {
+            case R.id.menu_deselect_all:
+                deselectAll();
+                return true;
+            case R.id.menu_change_sorting:
+                new ChangeSorting().execute();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
         }
     }
 }
