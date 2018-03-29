@@ -16,56 +16,57 @@
 
 package com.ferid.app.cleaner.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.ferid.app.cleaner.R;
+import com.ferid.app.cleaner.listeners.AdapterListener;
 import com.ferid.app.cleaner.model.Explorer;
 import com.ferid.app.cleaner.utility.PrefsUtil;
 
 import java.util.ArrayList;
 
 /**
- * Created by Ferid Cafer on 11/16/2015.
+ * Created by ferid.cafer on 3/29/2018.
  */
-public class ExplorerAdapter extends ArrayAdapter<Explorer> {
+
+public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHolder> {
     private Context context;
-    private int layoutResId;
+
     private ArrayList<Explorer> items;
 
-    public ExplorerAdapter(Context context, int layoutResId, ArrayList<Explorer> objects) {
-        super(context, layoutResId, objects);
-        this.items = objects;
+    private AdapterListener adapterClickListener;
+
+    public ExplorerAdapter(Context context, ArrayList<Explorer> items) {
         this.context = context;
-        this.layoutResId = layoutResId;
+        this.items = items;
+    }
+
+    /**
+     * Set on item click listener
+     * @param adapterClickListener AdapterClickListener
+     */
+    public void setAdapterClickListener(AdapterListener adapterClickListener) {
+        this.adapterClickListener = adapterClickListener;
     }
 
     @Override
-    public View getView(final int position, View convertView, ViewGroup parent) {
-        ViewHolder viewHolder;
+    public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.explorer_list_item, parent, false);
 
-        if (convertView == null) {
-            LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-            convertView = inflater.inflate(layoutResId, parent, false);
-            viewHolder = new ViewHolder();
+        return new ViewHolder(view);
+    }
 
-            viewHolder.path = convertView.findViewById(R.id.path);
-            viewHolder.size = convertView.findViewById(R.id.size);
-            viewHolder.checkBox = convertView.findViewById(R.id.checkBox);
-
-            convertView.setTag(viewHolder);
-        } else {
-            viewHolder = (ViewHolder) convertView.getTag();
-        }
-
-        final Explorer item = items.get(position);
+    @Override
+    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
+        Explorer item = items.get(position);
 
         viewHolder.path.setText(item.getPath());
 
@@ -78,13 +79,33 @@ public class ExplorerAdapter extends ArrayAdapter<Explorer> {
             viewHolder.checkBox.setImageResource(R.drawable.ic_check_box_blank);
             viewHolder.checkBox.setColorFilter(ContextCompat.getColor(context, R.color.darkGrey));
         }
-
-        return convertView;
     }
 
-    private static class ViewHolder {
+    @Override
+    public int getItemCount() {
+        return items == null ? 0 : items.size();
+    }
+
+    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView path;
         TextView size;
         ImageView checkBox;
+
+        public ViewHolder(View itemView) {
+            super(itemView);
+            itemView.setOnClickListener(this);
+            path = itemView.findViewById(R.id.path);
+            size = itemView.findViewById(R.id.size);
+            checkBox = itemView.findViewById(R.id.checkBox);
+        }
+
+        @Override
+        public void onClick(View v) {
+            final int position = getAdapterPosition();
+
+            if (adapterClickListener != null && position != RecyclerView.NO_POSITION) {
+                adapterClickListener.OnItemClick(position);
+            }
+        }
     }
 }

@@ -26,16 +26,17 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
 import android.widget.TextView;
 
 import com.ferid.app.cleaner.adapter.ExplorerAdapter;
 import com.ferid.app.cleaner.enums.SortingType;
+import com.ferid.app.cleaner.listeners.AdapterListener;
 import com.ferid.app.cleaner.listeners.CleaningListener;
 import com.ferid.app.cleaner.listeners.SizeListener;
 import com.ferid.app.cleaner.model.Explorer;
@@ -44,7 +45,6 @@ import com.ferid.app.cleaner.tasks.GetFolderSizeTask;
 import com.ferid.app.cleaner.utility.ExplorerUtility;
 import com.ferid.app.cleaner.utility.PrefsUtil;
 import com.ferid.app.cleaner.widget.CleanerWidget;
-import com.nhaarman.listviewanimations.appearance.simple.SwingBottomInAnimationAdapter;
 
 import java.io.File;
 import java.text.Collator;
@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
     private Context context;
 
     //listViewExplorer elements
-    private ListView listViewExplorer;
+    private RecyclerView listViewExplorer;
     private ExplorerAdapter adapterExplorer;
     private ArrayList<Explorer> arrayListExplorer = new ArrayList<>();
     //fill all folders
@@ -92,19 +92,13 @@ public class MainActivity extends AppCompatActivity {
         textViewSize = findViewById(R.id.textViewSize);
         actionButtonDelete = findViewById(R.id.actionButtonDelete);
 
+        //list
         listViewExplorer = findViewById(R.id.list);
-        adapterExplorer = new ExplorerAdapter(context,
-                R.layout.explorer_list_item, arrayListExplorer);
+        adapterExplorer = new ExplorerAdapter(context, arrayListExplorer);
+        listViewExplorer.setAdapter(adapterExplorer);
+        listViewExplorer.setLayoutManager(new LinearLayoutManager(context));
+        listViewExplorer.setHasFixedSize(true);
 
-        //listViewExplorer item animations
-        SwingBottomInAnimationAdapter swingBottomInAnimationAdapter
-                = new SwingBottomInAnimationAdapter(adapterExplorer);
-        swingBottomInAnimationAdapter.setAbsListView(listViewExplorer);
-
-        assert swingBottomInAnimationAdapter.getViewAnimator() != null;
-        swingBottomInAnimationAdapter.getViewAnimator().setInitialDelayMillis(300);
-
-        listViewExplorer.setAdapter(swingBottomInAnimationAdapter);
 
         setOnClickListeners();
 
@@ -140,9 +134,9 @@ public class MainActivity extends AppCompatActivity {
      * Set on click listeners
      */
     private void setOnClickListeners() {
-        listViewExplorer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        adapterExplorer.setAdapterClickListener(new AdapterListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+            public void OnItemClick(int position) {
                 if (arrayListExplorer.size() > position) {
                     Explorer explorer = arrayListExplorer.get(position);
 
