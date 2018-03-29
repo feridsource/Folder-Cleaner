@@ -51,6 +51,7 @@ public class CleanerWidget extends AppWidgetProvider {
     public static final String APP_TO_WID = "com.ferid.app.cleaner.widget.APP_TO_WID";
     public static final String WID_CLICKED = "com.ferid.app.cleaner.widget.WID_CLICKED";
     public static final String WIDGET_ENABLED = "android.appwidget.action.APPWIDGET_ENABLED";
+    public static final String WIDGET_DISABLED = "android.appwidget.action.APPWIDGET_DISABLED";
 
     //tasks
     private CleanFoldersTask cleanFoldersTask;
@@ -77,11 +78,15 @@ public class CleanerWidget extends AppWidgetProvider {
         thisWidget = new ComponentName(context, CleanerWidget.class);
 
         if (remoteViews != null) {
-            if (intent.getAction().equals(APP_TO_WID)
-                    || intent.getAction().equals(WIDGET_ENABLED)) {
-                getFolderSize();
-            } else if (intent.getAction().equals(WID_CLICKED)) {
-                cleanSelectedFolders();
+            if (intent != null && intent.getAction() != null) {
+                if (intent.getAction().equals(APP_TO_WID)
+                        || intent.getAction().equals(WIDGET_ENABLED)) {
+                    getFolderSize();
+                } else if (intent.getAction().equals(WID_CLICKED)) {
+                    cleanSelectedFolders();
+                } else if (intent.getAction().equals(WIDGET_DISABLED)) {
+                    releaseListeners();
+                }
             }
 
             setOnClickListener();
@@ -166,4 +171,14 @@ public class CleanerWidget extends AppWidgetProvider {
             appWidgetManager.updateAppWidget(thisWidget, remoteViews);
         }
     };
+
+    private void releaseListeners() {
+        if (cleanFoldersTask != null) {
+            cleanFoldersTask.setListener(null);
+        }
+
+        if (getFolderSizeTask != null) {
+            getFolderSizeTask.setListener(null);
+        }
+    }
 }
