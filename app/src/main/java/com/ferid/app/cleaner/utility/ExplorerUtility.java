@@ -96,7 +96,7 @@ public class ExplorerUtility {
      * Search through directories and delete recursively
      * @param files array of files and directories to be deleted
      */
-    private static void deleteFiles(File[] files) {
+    private static synchronized void deleteFiles(File[] files) {
         Iterable<File> filesList = Arrays.asList(files);
 
         for (Iterator<File> iterateFiles = filesList.iterator(); iterateFiles.hasNext();) {
@@ -109,7 +109,7 @@ public class ExplorerUtility {
      * Search through directory and delete its files recursively
      * @param file directory to iterate recursively or file
      */
-    private static void recursiveDelete(File file) {
+    private static synchronized void recursiveDelete(File file) {
         if (file.exists()) {
             if (file.isDirectory()) {
                 for (File f : file.listFiles()) {
