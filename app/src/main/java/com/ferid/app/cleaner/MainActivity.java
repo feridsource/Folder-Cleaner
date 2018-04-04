@@ -254,31 +254,23 @@ public class MainActivity extends AppCompatActivity {
         updateCleanerWidget();
     }
 
-    private class ChangeSorting extends AsyncTask<Void, Void, Void> {
+    /**
+     * Change sorting and refresh list
+     */
+    private void changeSorting() {
+        //get current sorting type and convert it into the next one
+        SortingType sortingType = PrefsUtil.getSortingType(context).next();
 
-        @Override
-        protected Void doInBackground(Void... params) {
-            //get current sorting type and convert it into the next one
-            SortingType sortingType = PrefsUtil.getSortingType(context).next();
+        //sort elements
+        sortElements(sortingType);
 
-            //sort elements
-            sortElements(sortingType);
+        //save the next sorting type
+        PrefsUtil.setSortingType(context, sortingType);
 
-            //save the next sorting type
-            PrefsUtil.setSortingType(context, sortingType);
+        arrayListExplorer.clear();
+        arrayListExplorer.addAll(allPaths);
 
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            arrayListExplorer.clear();
-            arrayListExplorer.addAll(allPaths);
-
-            adapterExplorer.notifyDataSetChanged();
-        }
+        adapterExplorer.notifyDataSetChanged();
     }
 
     /**
@@ -418,7 +410,7 @@ public class MainActivity extends AppCompatActivity {
                 deselectAll();
                 return true;
             case R.id.menu_change_sorting:
-                new ChangeSorting().execute();
+                changeSorting();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

@@ -37,7 +37,6 @@ import java.util.ArrayList;
 /**
  * Created by ferid.cafer on 3/29/2018.
  */
-
 public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHolder> {
     private Context context;
 
@@ -70,8 +69,8 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(ViewHolder viewHolder, final int position) {
-        Explorer item = items.get(position);
+    public void onBindViewHolder(ViewHolder viewHolder, int position) {
+        Explorer item = items.get(viewHolder.getAdapterPosition());
 
         viewHolder.path.setText(item.getPath());
 
@@ -86,10 +85,10 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
         }
 
         //play animation for once
-        if (position > lastPosition) {
+        if (viewHolder.getAdapterPosition() > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(context, R.anim.list_anim);
             viewHolder.itemView.startAnimation(animation);
-            lastPosition = position;
+            lastPosition = viewHolder.getAdapterPosition();
         }
     }
 
@@ -103,7 +102,7 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
         TextView size;
         ImageView checkBox;
 
-        public ViewHolder(View itemView) {
+        private ViewHolder(View itemView) {
             super(itemView);
             itemView.setOnClickListener(this);
             path = itemView.findViewById(R.id.path);
