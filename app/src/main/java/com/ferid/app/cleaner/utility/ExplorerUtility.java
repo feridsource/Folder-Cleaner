@@ -87,7 +87,7 @@ public class ExplorerUtility {
         for (String path : cleaningPaths) {
             directory = new File(PrefsUtil.getExplorerRootPath() + "/" + path);
             if (directory.exists()) {
-                deleteDirectory(directory.listFiles());
+                deleteFiles(directory.listFiles());
             }
         }
     }
@@ -96,20 +96,12 @@ public class ExplorerUtility {
      * Search through directories and delete recursively
      * @param files array of files and directories to be deleted
      */
-    private static void deleteDirectory(File[] files) {
+    private static void deleteFiles(File[] files) {
         Iterable<File> filesList = Arrays.asList(files);
 
         for (Iterator<File> iterateFiles = filesList.iterator(); iterateFiles.hasNext();) {
             File file = iterateFiles.next();
-            if (file.exists()) {
-                if (file.isDirectory()) {
-                    //delete files recursively
-                    recursiveDelete(file);
-                } else {
-                    //delete file
-                    file.delete();
-                }
-            }
+            recursiveDelete(file);
         }
     }
 
