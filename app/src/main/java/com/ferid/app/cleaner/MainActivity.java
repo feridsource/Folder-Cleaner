@@ -20,8 +20,8 @@ import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.widget.SwipeRefreshLayout;
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
      */
     private void refresh() {
         //get all explorers
-        new GetExplorerList().execute();
+        getExplorerList();
 
         //update widget
         updateCleanerWidget();
@@ -276,49 +276,38 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Search through folders
      */
-    private class GetExplorerList extends AsyncTask<Void, Void, Void> {
+    private void getExplorerList() {
+        new Handler().post(new Runnable() {
+            @Override
+            public void run() {
+                swipeRefreshLayout.setRefreshing(true);
 
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
+                allPaths.clear();
 
-            swipeRefreshLayout.setRefreshing(true);
+                File root = PrefsUtil.getExplorerRootPath();
+                if (root.exists()) {
+                    searchParentFolders(root.listFiles());
 
-            allPaths.clear();
-        }
+                    //get sorting type and sort elements accordingly
+                    sortElements(PrefsUtil.getSortingType(context));
 
-        @Override
-        protected Void doInBackground(Void... params) {
-            File root = PrefsUtil.getExplorerRootPath();
-            if (root.exists()) {
-                searchParentFolders(root.listFiles());
+                    //update allPaths according to cleaning paths
+                    getCleaningPaths();
+                }
 
-                //get sorting type and sort elements accordingly
-                sortElements(PrefsUtil.getSortingType(context));
+                arrayListExplorer.clear();
+                arrayListExplorer.addAll(allPaths);
 
-                //update allPaths according to cleaning paths
-                getCleaningPaths();
+                adapterExplorer.notifyDataSetChanged();
+
+                //update total cleaning folder size
+                getFolderSizeTask = new GetFolderSizeTask();
+                getFolderSizeTask.setListener(sizeListener);
+                getFolderSizeTask.execute(cleaningPaths);
+
+                swipeRefreshLayout.setRefreshing(false);
             }
-
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(Void aVoid) {
-            super.onPostExecute(aVoid);
-
-            arrayListExplorer.clear();
-            arrayListExplorer.addAll(allPaths);
-
-            adapterExplorer.notifyDataSetChanged();
-
-            //update total cleaning folder size
-            getFolderSizeTask = new GetFolderSizeTask();
-            getFolderSizeTask.setListener(sizeListener);
-            getFolderSizeTask.execute(cleaningPaths);
-
-            swipeRefreshLayout.setRefreshing(false);
-        }
+        });
     }
 
     /**
