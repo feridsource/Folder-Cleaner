@@ -13,7 +13,6 @@
     <dimen name="margin_tiny">4dp</dimen>
     <dimen name="listview_item_height">72dp</dimen>
 
-    <dimen name="drop_shadow_height">8dp</dimen>
     <dimen name="secondary_toolbar_height">72dp</dimen>
     <dimen name="secondary_toolbar_heightX2">144dp</dimen>
 
