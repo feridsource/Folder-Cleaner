@@ -30,14 +30,6 @@
 
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/drop_shadow_height"
-        android:layout_below="@+id/toolbar"
-        android:layout_marginTop="@dimen/secondary_toolbar_height"
-        android:background="@drawable/drop_shadow"
-        android:alpha="0.5" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="@dimen/secondary_toolbar_heightX2"
@@ -46,7 +38,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/secondary_toolbar_height"
-            android:background="@color/colorPrimary">
+            android:background="@color/colorPrimary"
+            android:elevation="4dp">
 
             <TextView
                 android:id="@+id/textViewSize"
