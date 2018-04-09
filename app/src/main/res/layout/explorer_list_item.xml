@@ -7,14 +7,14 @@
     android:layout_height="@dimen/listview_item_height"
     android:layout_marginLeft="@dimen/default_margin"
     android:layout_marginRight="@dimen/default_margin"
-    android:layout_marginTop="@dimen/margin_tiny"
-    android:layout_marginBottom="@dimen/margin_tiny"
+    card_view:cardUseCompatPadding="true"
     card_view:cardCornerRadius="2dp"
     card_view:cardElevation="2dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground">
 
         <ImageView
             android:id="@+id/imageViewFolder"
@@ -24,7 +24,8 @@
             android:layout_alignParentStart="true"
             android:layout_marginStart="@dimen/default_margin"
             app:srcCompat="@drawable/ic_folder"
-            android:tint="@color/grey"/>
+            android:tint="@color/grey"
+            android:contentDescription="@null"/>
 
         <LinearLayout
             android:orientation="vertical"
