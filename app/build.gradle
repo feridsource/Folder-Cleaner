@@ -19,7 +19,7 @@ android {
     }
 }
 
-def supportLibVersion = "27.1.0"
+def supportLibVersion = "27.1.1"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
