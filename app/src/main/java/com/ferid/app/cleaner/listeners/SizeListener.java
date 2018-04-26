@@ -17,7 +17,7 @@
 package com.ferid.app.cleaner.listeners;
 
 /**
- * Created by ferid.cafer on 3/29/2018.
+ * Listener for getting size
  */
 public interface SizeListener {
     void OnResult(double sum);

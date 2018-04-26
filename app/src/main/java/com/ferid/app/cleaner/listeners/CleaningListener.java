@@ -17,7 +17,7 @@
 package com.ferid.app.cleaner.listeners;
 
 /**
- * Created by ferid.cafer on 3/29/2018.
+ * Listener of cleaning process
  */
 public interface CleaningListener {
     void OnCompleted();

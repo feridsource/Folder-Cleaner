@@ -17,7 +17,7 @@
 package com.ferid.app.cleaner.listeners;
 
 /**
- * Created by ferid.cafer on 3/29/2018.
+ * Recycler view adapter item click listener
  */
 public interface AdapterListener {
     void OnItemClick(int position);
