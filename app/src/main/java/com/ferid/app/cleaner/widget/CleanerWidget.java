@@ -123,7 +123,8 @@ public class CleanerWidget extends AppWidgetProvider {
      * Widget on click listener
      */
     private void setOnClickListener() {
-        Intent intent = new Intent(WID_CLICKED);
+        Intent intent = new Intent(context, CleanerWidget.class);
+        intent.setAction(WID_CLICKED);
         PendingIntent pendingIntent = PendingIntent
                 .getBroadcast(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         remoteViews.setOnClickPendingIntent(R.id.backgroundImage, pendingIntent);
