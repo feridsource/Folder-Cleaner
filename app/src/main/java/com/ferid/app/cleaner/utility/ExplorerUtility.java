@@ -97,10 +97,10 @@ public class ExplorerUtility {
      * @param files array of files and directories to be deleted
      */
     private static synchronized void deleteFiles(File[] files) {
-        Iterable<File> filesList = Arrays.asList(files);
+        Iterator<File> fileIterator = Arrays.asList(files).iterator();
 
-        for (Iterator<File> iterateFiles = filesList.iterator(); iterateFiles.hasNext();) {
-            File file = iterateFiles.next();
+        while (fileIterator.hasNext()) {
+            File file = fileIterator.next();
             recursiveDelete(file);
         }
     }

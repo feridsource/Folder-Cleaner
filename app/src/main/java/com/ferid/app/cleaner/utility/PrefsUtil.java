@@ -99,10 +99,10 @@ public class PrefsUtil {
         String formattedSize;
         DecimalFormat decimalFormat = new DecimalFormat("0.0");
 
-        if (size < 1000) {
+        if (size < 1024) {
             formattedSize = decimalFormat.format(size) + " " + context.getString(R.string.sizeUnitMb);
         } else {
-            size = size / 1000;
+            size = size / 1024;
             formattedSize = decimalFormat.format(size) + " " + context.getString(R.string.sizeUnitGb);
         }
 
