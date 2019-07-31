@@ -122,3 +122,4 @@ build/android-profile/profile-2018-03-19-14-22-38-153.rawproto
 .idea/
 build/
 .gradle/
+app/mapping.txt
