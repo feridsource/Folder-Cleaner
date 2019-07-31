@@ -18,8 +18,6 @@ package com.ferid.app.cleaner.utility;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Iterator;
 
 /**
  * Created by Ferid Cafer on 11/16/2015.
@@ -97,10 +95,7 @@ public class ExplorerUtility {
      * @param files array of files and directories to be deleted
      */
     private static synchronized void deleteFiles(File[] files) {
-        Iterator<File> fileIterator = Arrays.asList(files).iterator();
-
-        while (fileIterator.hasNext()) {
-            File file = fileIterator.next();
+        for (File file : files) {
             recursiveDelete(file);
         }
     }
