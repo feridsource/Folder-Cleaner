@@ -1,14 +1,14 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
+    compileSdkVersion 28
 
     defaultConfig {
         applicationId "com.ferid.app.cleaner"
         minSdkVersion 21
-        targetSdkVersion 27
-        versionCode 23
-        versionName "3.3.2"
+        targetSdkVersion 28
+        versionCode 24
+        versionName "3.3.3"
     }
     buildTypes {
         release {
@@ -19,7 +19,7 @@ android {
     }
 }
 
-def supportLibVersion = "27.1.1"
+def supportLibVersion = "28.0.0"
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])

@@ -154,7 +154,7 @@ public class PrefsUtil {
             int c;
             StringBuilder sb = new StringBuilder();
             while ((c = fin.read()) != -1) {
-                sb.append(Character.toString((char)c));
+                sb.append((char) c);
             }
             if (!sb.toString().equals("")) {
                 tmpList.addAll(Arrays.asList(sb.toString().split(",")));

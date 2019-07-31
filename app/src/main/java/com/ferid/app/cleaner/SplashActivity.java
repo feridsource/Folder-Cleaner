@@ -67,7 +67,7 @@ public class SplashActivity extends AppCompatActivity {
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           String permissions[], int[] grantResults) {
+                                           String[] permissions, int[] grantResults) {
 
         if (requestCode == REQUEST_EXTERNAL_STORAGE) {
             //if request is cancelled, the result arrays are empty.
