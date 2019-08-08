@@ -44,7 +44,7 @@ public class ExplorerUtility {
     }
 
     /**
-     * Get the file size in gb unit
+     * Get the file size in mb unit
      * @param directory File
      * @return double
      */
