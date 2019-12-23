@@ -22,17 +22,16 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v4.widget.SwipeRefreshLayout;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.ferid.app.cleaner.adapter.ExplorerAdapter;
 import com.ferid.app.cleaner.enums.SortingType;
@@ -45,6 +44,8 @@ import com.ferid.app.cleaner.tasks.GetFolderSizeTask;
 import com.ferid.app.cleaner.utility.ExplorerUtility;
 import com.ferid.app.cleaner.utility.PrefsUtil;
 import com.ferid.app.cleaner.widget.CleanerWidget;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 
 import java.io.File;
 import java.text.Collator;
@@ -60,13 +61,12 @@ public class MainActivity extends AppCompatActivity {
 
     private Context context;
 
-    //listViewExplorer elements
-    private RecyclerView listViewExplorer;
+    //explorer list elements
     private ExplorerAdapter adapterExplorer;
     private ArrayList<Explorer> arrayListExplorer = new ArrayList<>();
     //fill all folders
     private ArrayList<Explorer> allPaths = new ArrayList<>();
-    //used to save cleaning listViewExplorer
+    //used to save cleaning explorer list
     private ArrayList<String> cleaningPaths = new ArrayList<>();
 
     //components
@@ -93,12 +93,11 @@ public class MainActivity extends AppCompatActivity {
         actionButtonDelete = findViewById(R.id.actionButtonDelete);
 
         //list
-        listViewExplorer = findViewById(R.id.list);
+        RecyclerView listExplorer = findViewById(R.id.listExplorer);
         adapterExplorer = new ExplorerAdapter(context, arrayListExplorer);
-        listViewExplorer.setAdapter(adapterExplorer);
-        listViewExplorer.setLayoutManager(new LinearLayoutManager(context));
-        listViewExplorer.setHasFixedSize(true);
-
+        listExplorer.setAdapter(adapterExplorer);
+        listExplorer.setLayoutManager(new LinearLayoutManager(context));
+        listExplorer.setHasFixedSize(true);
 
         setOnClickListeners();
 
@@ -166,7 +165,7 @@ public class MainActivity extends AppCompatActivity {
                     public void OnCompleted() {
                         refresh();
 
-                        Snackbar.make(listViewExplorer, getString(R.string.cleaned),
+                        Snackbar.make(swipeRefreshLayout, getString(R.string.cleaned),
                                 Snackbar.LENGTH_SHORT).show();
                     }
                 });
@@ -280,6 +279,13 @@ public class MainActivity extends AppCompatActivity {
         new Handler().post(new Runnable() {
             @Override
             public void run() {
+                new Handler().post(new Runnable() {
+                    @Override
+                    public void run() {
+                        actionButtonDelete.hide();
+                    }
+                });
+
                 swipeRefreshLayout.setRefreshing(true);
 
                 allPaths.clear();
@@ -306,6 +312,13 @@ public class MainActivity extends AppCompatActivity {
                 getFolderSizeTask.execute(cleaningPaths);
 
                 swipeRefreshLayout.setRefreshing(false);
+
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        actionButtonDelete.show();
+                    }
+                }, 800);
             }
         });
     }

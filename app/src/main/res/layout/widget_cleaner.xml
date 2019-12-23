@@ -10,7 +10,8 @@
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
         android:src="@drawable/circle"
-        android:adjustViewBounds="true"/>
+        android:adjustViewBounds="true"
+        android:contentDescription="@null"/>
 
     <LinearLayout
         android:orientation="vertical"

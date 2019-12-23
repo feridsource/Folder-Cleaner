@@ -86,6 +86,9 @@ public class ExplorerUtility {
             directory = new File(PrefsUtil.getExplorerRootPath() + "/" + path);
             if (directory.exists()) {
                 deleteFiles(directory.listFiles());
+
+                //delete the directory too
+                directory.delete();
             }
         }
     }

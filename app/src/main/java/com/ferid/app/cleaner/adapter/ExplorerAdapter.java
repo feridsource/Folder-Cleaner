@@ -17,8 +17,6 @@
 package com.ferid.app.cleaner.adapter;
 
 import android.content.Context;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,6 +24,9 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.core.content.ContextCompat;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.ferid.app.cleaner.R;
 import com.ferid.app.cleaner.listeners.AdapterListener;
@@ -84,6 +85,12 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
             viewHolder.checkBox.setColorFilter(ContextCompat.getColor(context, R.color.darkGrey));
         }
 
+        if (item.getSize() > 0.0) {
+            viewHolder.imageViewFolder.setColorFilter(ContextCompat.getColor(context, R.color.fullFolder));
+        } else {
+            viewHolder.imageViewFolder.setColorFilter(ContextCompat.getColor(context, R.color.emptyFolder));
+        }
+
         //play animation for once
         if (viewHolder.getAdapterPosition() > lastPosition) {
             Animation animation = AnimationUtils.loadAnimation(context, R.anim.list_anim);
@@ -101,6 +108,7 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
         TextView path;
         TextView size;
         ImageView checkBox;
+        ImageView imageViewFolder;
 
         private ViewHolder(View itemView) {
             super(itemView);
@@ -108,6 +116,7 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
             path = itemView.findViewById(R.id.path);
             size = itemView.findViewById(R.id.size);
             checkBox = itemView.findViewById(R.id.checkBox);
+            imageViewFolder = itemView.findViewById(R.id.imageViewFolder);
         }
 
         @Override

@@ -24,7 +24,7 @@ import com.ferid.app.cleaner.utility.ExplorerUtility;
 import java.util.ArrayList;
 
 /**
- * Clean selected folders (cleaning listViewExplorer)
+ * Clean selected folders (cleaning files and folders)
  */
 public class CleanFoldersTask extends AsyncTask<ArrayList<String>, Void, Void> {
 
