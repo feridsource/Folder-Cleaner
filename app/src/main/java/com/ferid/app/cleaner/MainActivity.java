@@ -185,12 +185,11 @@ public class MainActivity extends AppCompatActivity {
                     String[] partPath = file.getPath().split("/0/");
                     //exclude the root content
                     if (partPath.length > 1) {
+                        String fileName = partPath[1];
+
                         //exclude hidden folders and files
-                        if (PrefsUtil.isValidFolder(partPath[1])) {
+                        if (PrefsUtil.isValidFolder(fileName)) {
                             explorer = new Explorer();
-
-                            String fileName = partPath[1];
-
                             explorer.setPath(fileName);
                             explorer.setHidden(fileName.startsWith(".")); //hidden files and folders
                             explorer.setDirectory(file.isDirectory()); //file or folder
