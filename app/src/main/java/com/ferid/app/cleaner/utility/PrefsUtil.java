@@ -209,8 +209,7 @@ public class PrefsUtil {
      * @return valid or not
      */
     public static boolean isValidFolder(String str) {
-        //hide hidden and app storage folders
-        return !str.contains("/.")
-                && !str.startsWith("/Android");
+        //cache folders
+        return !str.startsWith("Android");
     }
 }

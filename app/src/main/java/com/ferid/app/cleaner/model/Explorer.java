@@ -25,11 +25,15 @@ public class Explorer implements Serializable {
     private String path;
     private boolean toClean;
     private double size;
+    private boolean isHidden;
+    private boolean isDirectory;
 
     public Explorer() {
         path = "";
         toClean = false;
         size = 0.0;
+        isHidden = false;
+        isDirectory = false;
     }
 
     public String getPath() {
@@ -54,5 +58,21 @@ public class Explorer implements Serializable {
 
     public void setSize(double size) {
         this.size = size;
+    }
+
+    public boolean isHidden() {
+        return isHidden;
+    }
+
+    public void setHidden(boolean hidden) {
+        isHidden = hidden;
+    }
+
+    public boolean isDirectory() {
+        return isDirectory;
+    }
+
+    public void setDirectory(boolean directory) {
+        isDirectory = directory;
     }
 }

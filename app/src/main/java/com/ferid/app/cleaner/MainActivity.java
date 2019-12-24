@@ -182,21 +182,26 @@ public class MainActivity extends AppCompatActivity {
 
         for (File file : files) {
             if (file.exists()) {
-                if (file.isDirectory()) {
-                    String[] partPath = file.getPath().split("0");
+                    String[] partPath = file.getPath().split("/0/");
                     //exclude the root content
                     if (partPath.length > 1) {
                         //exclude hidden folders and files
                         if (PrefsUtil.isValidFolder(partPath[1])) {
-                            String folderName = partPath[1].substring(1);
                             explorer = new Explorer();
+
+                            String folderName = partPath[1];
+                            if (folderName.startsWith(".")) { //hidden folders
+                                folderName = folderName.substring(1);
+
+                                explorer.setHidden(true);
+                            }
                             explorer.setPath(folderName);
                             explorer.setSize(ExplorerUtility.getFileSize(file));
+                            explorer.setDirectory(file.isDirectory());
 
                             allPaths.add(explorer);
                         }
                     }
-                }
             }
         }
     }

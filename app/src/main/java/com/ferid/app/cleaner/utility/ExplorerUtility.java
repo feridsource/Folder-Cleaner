@@ -45,14 +45,18 @@ public class ExplorerUtility {
 
     /**
      * Get the file size in mb unit
-     * @param directory File
+     * @param file File
      * @return double
      */
-    public static double getFileSize(File directory) {
-        double bytes = getFolderSizeRecursively(directory);
-        double kilobytes = (bytes / 1024);
-
-        return (kilobytes / 1024); //megabytes
+    public static double getFileSize(File file) {
+        double bytes;
+        if (file.isDirectory()) {
+            bytes = getFolderSizeRecursively(file);
+        } else {
+            bytes = file.length();
+        }
+        
+        return (bytes / (1024 * 1024)); //megabytes
     }
 
     /**
@@ -85,9 +89,11 @@ public class ExplorerUtility {
         for (String path : cleaningPaths) {
             directory = new File(PrefsUtil.getExplorerRootPath() + "/" + path);
             if (directory.exists()) {
-                deleteFiles(directory.listFiles());
+                if (directory.isDirectory()) {
+                    deleteFiles(directory.listFiles());
+                }
 
-                //delete the directory too
+                //delete the file or the empty directory too
                 directory.delete();
             }
         }
@@ -98,8 +104,10 @@ public class ExplorerUtility {
      * @param files array of files and directories to be deleted
      */
     private static synchronized void deleteFiles(File[] files) {
-        for (File file : files) {
-            recursiveDelete(file);
+        if (files != null) {
+            for (File file : files) {
+                recursiveDelete(file);
+            }
         }
     }
 

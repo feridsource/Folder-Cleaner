@@ -86,9 +86,21 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
         }
 
         if (item.getSize() > 0.0) {
-            viewHolder.imageViewFolder.setColorFilter(ContextCompat.getColor(context, R.color.fullFolder));
+            if (item.isDirectory()) {
+                if (item.isHidden()) {
+                    viewHolder.imageViewFolder.setColorFilter(
+                            ContextCompat.getColor(context, R.color.hiddenFolder));
+                } else {
+                    viewHolder.imageViewFolder.setColorFilter(
+                            ContextCompat.getColor(context, R.color.fullFolder));
+                }
+            } else {
+                viewHolder.imageViewFolder.setColorFilter(
+                        ContextCompat.getColor(context, R.color.itIsFile));
+            }
         } else {
-            viewHolder.imageViewFolder.setColorFilter(ContextCompat.getColor(context, R.color.emptyFolder));
+            viewHolder.imageViewFolder.setColorFilter(
+                    ContextCompat.getColor(context, R.color.emptyFolder));
         }
 
         //play animation for once

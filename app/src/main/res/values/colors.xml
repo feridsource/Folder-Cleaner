@@ -10,7 +10,9 @@
     <color name="colorAccent">#CDDC39</color>
 
     <color name="fullFolder">#FFEB3B</color>
-    <color name="emptyFolder">#BDBDBD</color>
+    <color name="emptyFolder">#9E9E9E</color>
+    <color name="hiddenFolder">#F44336</color>
+    <color name="itIsFile">#9C27B0</color>
 
     <color name="primary_text">@color/blackish</color>
     <color name="secondary_text">@color/darkGrey</color>
