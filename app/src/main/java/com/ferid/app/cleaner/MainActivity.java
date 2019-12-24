@@ -190,12 +190,11 @@ public class MainActivity extends AppCompatActivity {
                             explorer = new Explorer();
 
                             String fileName = partPath[1];
-                            if (fileName.startsWith(".")) { //hidden files and folders
-                                explorer.setHidden(true);
-                            }
+
                             explorer.setPath(fileName);
+                            explorer.setHidden(fileName.startsWith(".")); //hidden files and folders
+                            explorer.setDirectory(file.isDirectory()); //file or folder
                             explorer.setSize(ExplorerUtility.getFileSize(file));
-                            explorer.setDirectory(file.isDirectory());
 
                             allPaths.add(explorer);
                         }
