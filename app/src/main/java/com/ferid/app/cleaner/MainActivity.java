@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
                     if (partPath.length > 1) {
                         String fileName = partPath[1];
 
-                        //exclude hidden folders and files
+                        //exclude exceptional files and folders
                         if (PrefsUtil.isValidFolder(fileName)) {
                             explorer = new Explorer();
                             explorer.setPath(fileName);

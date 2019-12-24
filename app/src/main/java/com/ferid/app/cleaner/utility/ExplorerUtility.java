@@ -44,16 +44,16 @@ public class ExplorerUtility {
     }
 
     /**
-     * Get the file size in mb unit
+     * Get the file or folder size in mb unit
      * @param file File
      * @return double
      */
     public static double getFileSize(File file) {
         double bytes;
         if (file.isDirectory()) {
-            bytes = getFolderSizeRecursively(file);
+            bytes = getFolderSizeRecursively(file); //get folder size
         } else {
-            bytes = file.length();
+            bytes = file.length(); //get file size
         }
 
         return (bytes / (1024 * 1024)); //megabytes

@@ -203,7 +203,7 @@ public class PrefsUtil {
     }
 
     /**
-     * Exceptional folders.<br />
+     * Exceptional files and folders.<br />
      * Check for validity.
      * @param str Folder Path
      * @return valid or not
