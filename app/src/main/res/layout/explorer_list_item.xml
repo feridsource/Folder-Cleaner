@@ -56,6 +56,16 @@
                 android:fontFamily="@string/fontFamilyCondensed"
                 android:maxLines="1"/>
 
+            <TextView
+                android:id="@+id/fileType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textColor="@color/secondary_text"
+                android:textSize="@dimen/text_size_micro"
+                android:fontFamily="@string/fontFamilyLight"
+                android:ellipsize="end"
+                android:maxLines="1"/>
+
         </LinearLayout>
 
         <ImageView

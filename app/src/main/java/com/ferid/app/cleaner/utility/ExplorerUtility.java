@@ -55,7 +55,7 @@ public class ExplorerUtility {
         } else {
             bytes = file.length();
         }
-        
+
         return (bytes / (1024 * 1024)); //megabytes
     }
 

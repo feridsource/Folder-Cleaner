@@ -86,21 +86,29 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
         }
 
         if (item.getSize() > 0.0) {
-            if (item.isDirectory()) {
-                if (item.isHidden()) {
-                    viewHolder.imageViewFolder.setColorFilter(
-                            ContextCompat.getColor(context, R.color.hiddenFolder));
-                } else {
+            if (item.isHidden()) {
+                viewHolder.imageViewFolder.setColorFilter(
+                        ContextCompat.getColor(context, R.color.hiddenFolder));
+
+                viewHolder.fileType.setText(context.getString(R.string.hidden));
+            } else {
+                if (item.isDirectory()) {
                     viewHolder.imageViewFolder.setColorFilter(
                             ContextCompat.getColor(context, R.color.fullFolder));
+
+                    viewHolder.fileType.setText(context.getString(R.string.fullFolder));
+                } else {
+                    viewHolder.imageViewFolder.setColorFilter(
+                            ContextCompat.getColor(context, R.color.itIsFile));
+
+                    viewHolder.fileType.setText(context.getString(R.string.file));
                 }
-            } else {
-                viewHolder.imageViewFolder.setColorFilter(
-                        ContextCompat.getColor(context, R.color.itIsFile));
             }
         } else {
             viewHolder.imageViewFolder.setColorFilter(
                     ContextCompat.getColor(context, R.color.emptyFolder));
+
+            viewHolder.fileType.setText(context.getString(R.string.emptyFolder));
         }
 
         //play animation for once
@@ -119,6 +127,7 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
     public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         TextView path;
         TextView size;
+        TextView fileType;
         ImageView checkBox;
         ImageView imageViewFolder;
 
@@ -127,6 +136,7 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
             itemView.setOnClickListener(this);
             path = itemView.findViewById(R.id.path);
             size = itemView.findViewById(R.id.size);
+            fileType = itemView.findViewById(R.id.fileType);
             checkBox = itemView.findViewById(R.id.checkBox);
             imageViewFolder = itemView.findViewById(R.id.imageViewFolder);
         }

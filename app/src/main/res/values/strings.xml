@@ -13,4 +13,9 @@
     <string name="cleaned">Cleaned</string>
     <string name="deselectAll">Deselect All</string>
     <string name="changeSorting">Change Sorting</string>
+
+    <string name="hidden">Hidden</string>
+    <string name="emptyFolder">Empty Folder</string>
+    <string name="fullFolder">Full Folder</string>
+    <string name="file">File</string>
 </resources>
