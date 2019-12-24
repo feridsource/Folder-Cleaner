@@ -73,10 +73,6 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
         Explorer item = items.get(viewHolder.getAdapterPosition());
 
-        viewHolder.path.setText(item.getPath());
-
-        viewHolder.size.setText(PrefsUtil.getDecimalFormat(context, item.getSize()));
-
         if (item.isToClean()) {
             viewHolder.checkBox.setImageResource(R.drawable.ic_check_box);
             viewHolder.checkBox.setColorFilter(ContextCompat.getColor(context, R.color.colorAccent));
@@ -110,6 +106,10 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
 
             viewHolder.fileType.setText(context.getString(R.string.emptyFolder));
         }
+
+        viewHolder.path.setText(item.getPath());
+
+        viewHolder.size.setText(PrefsUtil.getDecimalFormat(context, item.getSize()));
 
         //play animation for once
         if (viewHolder.getAdapterPosition() > lastPosition) {
