@@ -194,7 +194,7 @@ public class PrefsUtil {
         }
 
         //if any changes have happened, write the newer one
-        if (!(initialCleanList.containsAll(tmp) && tmp.containsAll(initialCleanList))) {
+        if (!tmp.containsAll(initialCleanList)) {
             PrefsUtil.writeCleaningList(context, tmp);
 
             initialCleanList.clear();

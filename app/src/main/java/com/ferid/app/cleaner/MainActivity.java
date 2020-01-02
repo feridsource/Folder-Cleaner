@@ -16,10 +16,7 @@
 
 package com.ferid.app.cleaner;
 
-import android.appwidget.AppWidgetManager;
-import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.Menu;
@@ -43,7 +40,6 @@ import com.ferid.app.cleaner.tasks.CleanFoldersTask;
 import com.ferid.app.cleaner.tasks.GetFolderSizeTask;
 import com.ferid.app.cleaner.utility.ExplorerUtility;
 import com.ferid.app.cleaner.utility.PrefsUtil;
-import com.ferid.app.cleaner.widget.CleanerWidget;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -109,24 +105,11 @@ public class MainActivity extends AppCompatActivity {
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                refresh();
+                getExplorerList();
             }
         });
 
-        refresh();
-    }
-
-    /**
-     * Get all explorers.<br />
-     * Update total folder size.<br />
-     * Update widget.
-     */
-    private void refresh() {
-        //get all explorers
         getExplorerList();
-
-        //update widget
-        updateCleanerWidget();
     }
 
     /**
@@ -150,8 +133,6 @@ public class MainActivity extends AppCompatActivity {
                     getFolderSizeTask = new GetFolderSizeTask();
                     getFolderSizeTask.setListener(sizeListener);
                     getFolderSizeTask.execute(cleaningPaths);
-                    //update widget
-                    updateCleanerWidget();
                 }
             }
         });
@@ -163,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                 cleanFoldersTask.setListener(new CleaningListener() {
                     @Override
                     public void OnCompleted() {
-                        refresh();
+                        getExplorerList();
 
                         Snackbar.make(swipeRefreshLayout, getString(R.string.cleaned),
                                 Snackbar.LENGTH_SHORT).show();
@@ -250,8 +231,6 @@ public class MainActivity extends AppCompatActivity {
         getFolderSizeTask = new GetFolderSizeTask();
         getFolderSizeTask.setListener(sizeListener);
         getFolderSizeTask.execute(cleaningPaths);
-
-        updateCleanerWidget();
     }
 
     /**
@@ -384,19 +363,6 @@ public class MainActivity extends AppCompatActivity {
         }
 
         super.onDestroy();
-    }
-
-    /**
-     * Update cleaner widget
-     */
-    private void updateCleanerWidget() {
-        AppWidgetManager appWidgetManager = AppWidgetManager.getInstance(context);
-        ComponentName thisAppWidget = new ComponentName(context.getPackageName(), this.getClass().getName());
-        Intent updateWidget = new Intent(context, CleanerWidget.class);
-        int[] appWidgetIds = appWidgetManager.getAppWidgetIds(thisAppWidget);
-        updateWidget.setAction(CleanerWidget.APP_TO_WID);
-        updateWidget.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
-        context.sendBroadcast(updateWidget);
     }
 
     @Override
