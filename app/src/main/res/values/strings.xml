@@ -8,11 +8,11 @@
     <string name="sizeUnitMb">MB</string>
     <string name="sizeUnitGb">GB</string>
     <string name="emptySize">0.0 MB</string>
-    <string name="emptySizeWidget">0.0</string>
 
     <string name="cleaned">Cleaned</string>
     <string name="deselectAll">Deselect All</string>
     <string name="changeSorting">Change Sorting</string>
+    <string name="nothing_to_clean">There is nothing to clean</string>
 
     <string name="hidden">Hidden</string>
     <string name="emptyFolder">Empty Folder</string>

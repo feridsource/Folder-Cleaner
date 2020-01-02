@@ -140,17 +140,22 @@ public class MainActivity extends AppCompatActivity {
         actionButtonDelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                cleanFoldersTask = new CleanFoldersTask();
-                cleanFoldersTask.setListener(new CleaningListener() {
-                    @Override
-                    public void OnCompleted() {
-                        getExplorerList();
+                if (!cleaningPaths.isEmpty()) {
+                    cleanFoldersTask = new CleanFoldersTask();
+                    cleanFoldersTask.setListener(new CleaningListener() {
+                        @Override
+                        public void OnCompleted() {
+                            getExplorerList();
 
-                        Snackbar.make(swipeRefreshLayout, getString(R.string.cleaned),
-                                Snackbar.LENGTH_SHORT).show();
-                    }
-                });
-                cleanFoldersTask.execute(cleaningPaths);
+                            Snackbar.make(swipeRefreshLayout, getString(R.string.cleaned),
+                                    Snackbar.LENGTH_SHORT).show();
+                        }
+                    });
+                    cleanFoldersTask.execute(cleaningPaths);
+                } else {
+                    Snackbar.make(swipeRefreshLayout, getString(R.string.nothing_to_clean),
+                            Snackbar.LENGTH_SHORT).show();
+                }
             }
         });
     }
@@ -330,7 +335,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Alphabetical order
      */
-    public class ExplorerComparator implements Comparator<Explorer> {
+    class ExplorerComparator implements Comparator<Explorer> {
         //prepare utf-8
         Collator collator = Collator.getInstance(new Locale("UTF-8"));
 
@@ -343,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
     /**
      * Size order
      */
-    public class SizeComparator implements Comparator<Explorer> {
+    class SizeComparator implements Comparator<Explorer> {
 
         @Override
         public int compare(Explorer e1, Explorer e2) {

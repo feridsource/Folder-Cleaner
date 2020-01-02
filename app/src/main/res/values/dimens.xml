@@ -17,8 +17,6 @@
     <dimen name="secondary_toolbar_height">72dp</dimen>
     <dimen name="secondary_toolbar_heightX2">144dp</dimen>
 
-    <dimen name="widget_size">64dp</dimen>
-
     <dimen name="splash_app_name_top_margin">96dp</dimen>
 
     <dimen name="icon_folder_size">48dp</dimen>
