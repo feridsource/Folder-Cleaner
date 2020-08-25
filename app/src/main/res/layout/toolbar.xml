@@ -5,6 +5,9 @@
     android:layout_height="?attr/actionBarSize"
     android:layout_width="match_parent"
     android:layout_alignParentTop="true"
+    android:elevation="@dimen/elevation_small"
     android:background="?attr/colorPrimary"
+    app:subtitle="@string/totalSize"
     app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
-    app:theme="@style/ThemeOverlay.AppCompat.Dark"/>
+    app:theme="@style/ThemeOverlay.AppCompat.Dark"
+    app:layout_scrollFlags="scroll|enterAlways"/>

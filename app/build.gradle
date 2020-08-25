@@ -1,14 +1,18 @@
 apply plugin: 'com.android.application'
 
+apply plugin: 'kotlin-android'
+
+apply plugin: 'kotlin-android-extensions'
+
 android {
-    compileSdkVersion 28
+    compileSdkVersion 29
 
     defaultConfig {
         applicationId "com.ferid.app.cleaner"
         minSdkVersion 21
-        targetSdkVersion 28
-        versionCode 29
-        versionName "4.1.0"
+        targetSdkVersion 29
+        versionCode 30
+        versionName "5.0.0"
     }
     buildTypes {
         release {
@@ -22,9 +26,15 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 
+    //kotlin
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
+
     //design
-    implementation "com.google.android.material:material:1.0.0"
+    implementation "com.google.android.material:material:1.2.0"
 
     //androidx
-    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+
+    //swipe refresh layout
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

@@ -22,7 +22,6 @@ import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -57,6 +56,9 @@ public class MainActivity extends AppCompatActivity {
 
     private Context context;
 
+    //toolbar
+    private Toolbar toolbar;
+
     //explorer list elements
     private ExplorerAdapter adapterExplorer;
     private ArrayList<Explorer> arrayListExplorer = new ArrayList<>();
@@ -67,7 +69,6 @@ public class MainActivity extends AppCompatActivity {
 
     //components
     private SwipeRefreshLayout swipeRefreshLayout;
-    private TextView textViewSize;
     private FloatingActionButton actionButtonDelete;
 
     //async tasks
@@ -82,10 +83,9 @@ public class MainActivity extends AppCompatActivity {
 
         context = this;
 
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        textViewSize = findViewById(R.id.textViewSize);
         actionButtonDelete = findViewById(R.id.actionButtonDelete);
 
         //list
@@ -328,7 +328,7 @@ public class MainActivity extends AppCompatActivity {
     private SizeListener sizeListener = new SizeListener() {
         @Override
         public void OnResult(double sum) {
-            textViewSize.setText(PrefsUtil.getDecimalFormat(context, sum));
+            toolbar.setTitle(PrefsUtil.getDecimalFormat(context, sum));
         }
     };
 
