@@ -27,7 +27,6 @@
             android:layout_height="match_parent"
             android:paddingTop="@dimen/margin_default"
             android:paddingBottom="@dimen/margin_huge"
-            android:drawSelectorOnTop="true"
             android:clipToPadding="false"/>
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>

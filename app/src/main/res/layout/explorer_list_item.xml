@@ -13,8 +13,7 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="?android:attr/selectableItemBackground">
+        android:layout_height="wrap_content">
 
         <ImageView
             android:id="@+id/imageViewFolder"
@@ -43,7 +42,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/primary_text"
                 android:textSize="@dimen/text_size_medium"
-                android:fontFamily="@string/fontFamilyCondensed"
+                android:fontFamily="sans-serif-condensed"
                 android:ellipsize="end"
                 android:maxLines="1"/>
 
@@ -53,7 +52,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/text_size_small"
-                android:fontFamily="@string/fontFamilyCondensed"
+                android:fontFamily="sans-serif-condensed"
                 android:maxLines="1"/>
 
             <TextView
@@ -62,7 +61,7 @@
                 android:layout_height="wrap_content"
                 android:textColor="@color/secondary_text"
                 android:textSize="@dimen/text_size_micro"
-                android:fontFamily="@string/fontFamilyLight"
+                android:fontFamily="sans-serif-light"
                 android:ellipsize="end"
                 android:maxLines="1"/>
 
