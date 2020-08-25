@@ -199,25 +199,6 @@ public class MainActivity extends AppCompatActivity {
                 cleaningPaths.add(explorer.getPath());
             }
         }
-
-        PrefsUtil.writeCleaningList(context, cleaningPaths);
-    }
-
-    /**
-     * Get (read) cleaning paths and set into allPaths
-     */
-    private void getCleaningPaths() {
-        cleaningPaths.clear();
-        cleaningPaths.addAll(PrefsUtil.readCleaningList(context));
-
-        for (int i = 0; i < allPaths.size(); i++) {
-            Explorer explorer = allPaths.get(i);
-            for (String cleanigPath : cleaningPaths) {
-                if (explorer.getPath().equals(cleanigPath)) {
-                    allPaths.get(i).setToClean(true);
-                }
-            }
-        }
     }
 
     /**
@@ -225,7 +206,6 @@ public class MainActivity extends AppCompatActivity {
      */
     private void deselectAll() {
         cleaningPaths.clear();
-        PrefsUtil.writeCleaningList(context, cleaningPaths);
 
         for (Explorer explorer : arrayListExplorer) {
             explorer.setToClean(false);
@@ -281,9 +261,6 @@ public class MainActivity extends AppCompatActivity {
 
                     //get sorting type and sort elements accordingly
                     sortElements(PrefsUtil.getSortingType(context));
-
-                    //update allPaths according to cleaning paths
-                    getCleaningPaths();
                 }
 
                 arrayListExplorer.clear();

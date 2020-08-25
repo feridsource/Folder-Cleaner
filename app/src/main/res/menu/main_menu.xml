@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
-        android:id="@+id/menu_deselect_all"
-        android:title="@string/deselectAll"
-        android:icon="@drawable/ic_clear_all"
-        android:orderInCategory="2"
-        app:showAsAction="ifRoom"/>
-
-    <item
         android:id="@+id/menu_change_sorting"
         android:title="@string/changeSorting"
         android:icon="@drawable/ic_sort"
         android:orderInCategory="1"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="never"/>
+
+    <item
+        android:id="@+id/menu_deselect_all"
+        android:title="@string/deselectAll"
+        android:icon="@drawable/ic_clear_all"
+        android:orderInCategory="2"
+        app:showAsAction="never"/>
 
 </menu>

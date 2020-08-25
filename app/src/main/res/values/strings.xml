@@ -1,12 +1,10 @@
 <resources>
     <string name="app_name">Folder Cleaner</string>
-    <string name="list_file_name">cleaner.bin</string>
     <string name="shared_preferences">FOLDER_CLEANER_PREF</string>
     <string name="sorting_type">SORTING_TYPE</string>
 
 
     <string name="sizeUnitMb">MB</string>
-    <string name="sizeUnitGb">GB</string>
     <string name="emptySize">0.0 MB</string>
     <string name="totalSize">Total Size</string>
 
