@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-package com.ferid.app.cleaner.listeners;
+package com.ferid.app.cleaner.listeners
 
 /**
  * Recycler view adapter item click listener
  */
-public interface AdapterListener {
-    void OnItemClick(int position);
+interface AdapterListener {
+    /**
+     * On item is clicked
+     */
+    fun onItemClick(position: Int)
 }

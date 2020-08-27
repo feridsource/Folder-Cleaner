@@ -40,7 +40,7 @@ public class GetFolderSizeTask extends AsyncTask<ArrayList<String>, Void, Double
         super.onPostExecute(sum);
 
         if (sizeListener != null) {
-            sizeListener.OnResult(sum);
+            sizeListener.onResult(sum);
         }
     }
 

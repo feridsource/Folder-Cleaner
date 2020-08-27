@@ -31,7 +31,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.ferid.app.cleaner.R;
 import com.ferid.app.cleaner.listeners.AdapterListener;
 import com.ferid.app.cleaner.model.Explorer;
-import com.ferid.app.cleaner.utility.PrefsUtil;
+import com.ferid.app.cleaner.utility.PrefsUtility;
 
 import java.util.ArrayList;
 
@@ -109,7 +109,7 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
 
         viewHolder.path.setText(item.getPath());
 
-        viewHolder.size.setText(PrefsUtil.getDecimalFormat(context, item.getSize()));
+        viewHolder.size.setText(PrefsUtility.INSTANCE.getDecimalFormat(context, item.getSize()));
 
         //play animation for once
         if (viewHolder.getAdapterPosition() > lastPosition) {
@@ -146,7 +146,7 @@ public class ExplorerAdapter extends RecyclerView.Adapter<ExplorerAdapter.ViewHo
             final int position = getAdapterPosition();
 
             if (adapterClickListener != null && position != RecyclerView.NO_POSITION) {
-                adapterClickListener.OnItemClick(position);
+                adapterClickListener.onItemClick(position);
             }
         }
     }

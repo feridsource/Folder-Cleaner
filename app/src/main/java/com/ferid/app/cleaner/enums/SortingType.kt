@@ -14,11 +14,15 @@
  * limitations under the License.
  */
 
-package com.ferid.app.cleaner.listeners;
+package com.ferid.app.cleaner.enums
 
 /**
- * Listener of cleaning process
+ * Sorting type of the list of directories
  */
-public interface CleaningListener {
-    void OnCompleted();
+enum class SortingType(val value: Int) {
+    ALPHABET(0), SIZE(1);
+
+    operator fun next(): SortingType {
+        return values()[(ordinal + 1) % values().size]
+    }
 }

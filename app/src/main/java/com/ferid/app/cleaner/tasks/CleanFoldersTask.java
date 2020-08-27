@@ -42,7 +42,7 @@ public class CleanFoldersTask extends AsyncTask<ArrayList<String>, Void, Void> {
         super.onPostExecute(aVoid);
 
         if (operationListener != null) {
-            operationListener.OnCompleted();
+            operationListener.onCompleted();
         }
     }
 

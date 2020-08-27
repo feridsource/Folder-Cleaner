@@ -14,25 +14,14 @@
  * limitations under the License.
  */
 
-package com.ferid.app.cleaner.enums;
+package com.ferid.app.cleaner.model
 
-/**
- * Created by Ferid Cafer on 11/30/2015.
- */
-public enum SortingType {
-    ALPHABET(0),
-    SIZE(1);
+class Explorer {
 
-    private final int value;
+    var path: String = ""
+    var isToClean: Boolean = false
+    var size: Double = 0.0
+    var isHidden: Boolean = false
+    var isDirectory: Boolean = false
 
-    SortingType(int value) {
-        this.value = value;
-    }
-    public int getValue() {
-        return value;
-    }
-
-    public SortingType next() {
-        return values()[(ordinal() + 1) % values().length];
-    }
 }

@@ -14,11 +14,14 @@
  * limitations under the License.
  */
 
-package com.ferid.app.cleaner.listeners;
+package com.ferid.app.cleaner.listeners
 
 /**
  * Listener for getting size
  */
-public interface SizeListener {
-    void OnResult(double sum);
+interface SizeListener {
+    /**
+     * On sum of the size is found
+     */
+    fun onResult(sum: Double)
 }

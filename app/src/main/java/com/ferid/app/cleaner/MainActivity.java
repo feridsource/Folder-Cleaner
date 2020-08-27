@@ -38,7 +38,7 @@ import com.ferid.app.cleaner.model.Explorer;
 import com.ferid.app.cleaner.tasks.CleanFoldersTask;
 import com.ferid.app.cleaner.tasks.GetFolderSizeTask;
 import com.ferid.app.cleaner.utility.ExplorerUtility;
-import com.ferid.app.cleaner.utility.PrefsUtil;
+import com.ferid.app.cleaner.utility.PrefsUtility;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 
@@ -118,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
     private void setOnClickListeners() {
         adapterExplorer.setAdapterClickListener(new AdapterListener() {
             @Override
-            public void OnItemClick(int position) {
+            public void onItemClick(int position) {
                 if (arrayListExplorer.size() > position) {
                     Explorer explorer = arrayListExplorer.get(position);
 
@@ -144,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
                     cleanFoldersTask = new CleanFoldersTask();
                     cleanFoldersTask.setListener(new CleaningListener() {
                         @Override
-                        public void OnCompleted() {
+                        public void onCompleted() {
                             getExplorerList();
 
                             Snackbar.make(swipeRefreshLayout, getString(R.string.cleaned),
@@ -174,7 +174,7 @@ public class MainActivity extends AppCompatActivity {
                         String fileName = partPath[1];
 
                         //exclude exceptional files and folders
-                        if (PrefsUtil.isValidFolder(fileName)) {
+                        if (PrefsUtility.INSTANCE.isValidFolder(fileName)) {
                             explorer = new Explorer();
                             explorer.setPath(fileName);
                             explorer.setHidden(fileName.startsWith(".")); //hidden files and folders
@@ -223,13 +223,13 @@ public class MainActivity extends AppCompatActivity {
      */
     private void changeSorting() {
         //get current sorting type and convert it into the next one
-        SortingType sortingType = PrefsUtil.getSortingType(context).next();
+        SortingType sortingType = PrefsUtility.INSTANCE.getSortingType(context).next();
 
         //sort elements
         sortElements(sortingType);
 
         //save the next sorting type
-        PrefsUtil.setSortingType(context, sortingType);
+        PrefsUtility.INSTANCE.setSortingType(context, sortingType);
 
         arrayListExplorer.clear();
         arrayListExplorer.addAll(allPaths);
@@ -255,12 +255,12 @@ public class MainActivity extends AppCompatActivity {
 
                 allPaths.clear();
 
-                File root = PrefsUtil.getExplorerRootPath();
+                File root = PrefsUtility.INSTANCE.getExplorerRootPath();
                 if (root.exists()) {
                     searchParentFolders(root.listFiles());
 
                     //get sorting type and sort elements accordingly
-                    sortElements(PrefsUtil.getSortingType(context));
+                    sortElements(PrefsUtility.INSTANCE.getSortingType(context));
                 }
 
                 arrayListExplorer.clear();
@@ -304,8 +304,8 @@ public class MainActivity extends AppCompatActivity {
      */
     private SizeListener sizeListener = new SizeListener() {
         @Override
-        public void OnResult(double sum) {
-            toolbar.setTitle(PrefsUtil.getDecimalFormat(context, sum));
+        public void onResult(double sum) {
+            toolbar.setTitle(PrefsUtility.INSTANCE.getDecimalFormat(context, sum));
         }
     };
 
