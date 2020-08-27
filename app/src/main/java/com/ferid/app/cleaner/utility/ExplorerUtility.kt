@@ -13,34 +13,32 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package com.ferid.app.cleaner.utility
 
-package com.ferid.app.cleaner.utility;
-
-import java.io.File;
-import java.util.ArrayList;
+import com.ferid.app.cleaner.utility.PrefsUtility.getExplorerRootPath
+import java.io.File
+import java.util.*
 
 /**
  * Created by Ferid Cafer on 11/16/2015.
  */
-public class ExplorerUtility {
-
+object ExplorerUtility {
     /**
      * Get total file size of cleaning paths
      * @param cleaningPaths
      * @return
      */
-    public static double getTotalFileSize(ArrayList<String> cleaningPaths) {
-        File file;
-        double sum = 0.0;
-
-        for (String path : cleaningPaths) {
-            file = new File(PrefsUtility.INSTANCE.getExplorerRootPath() + "/" + path);
+    @JvmStatic
+    fun getTotalFileSize(cleaningPaths: ArrayList<String>): Double {
+        var file: File
+        var sum = 0.0
+        for (path in cleaningPaths) {
+            file = File(getExplorerRootPath().toString() + "/" + path)
             if (file.exists()) {
-                sum += getFileSize(file);
+                sum += getFileSize(file)
             }
         }
-
-        return sum;
+        return sum
     }
 
     /**
@@ -48,15 +46,15 @@ public class ExplorerUtility {
      * @param file File
      * @return double
      */
-    public static double getFileSize(File file) {
-        double bytes;
-        if (file.isDirectory()) {
-            bytes = getFolderSizeRecursively(file); //get folder size
+    @JvmStatic
+    fun getFileSize(file: File): Double {
+        val bytes: Double
+        bytes = if (file.isDirectory) {
+            getFolderSizeRecursively(file).toDouble() //get folder size
         } else {
-            bytes = file.length(); //get file size
+            file.length().toDouble() //get file size
         }
-
-        return (bytes / (1024 * 1024)); //megabytes
+        return bytes / (1024 * 1024) //megabytes
     }
 
     /**
@@ -64,37 +62,36 @@ public class ExplorerUtility {
      * @param directory File
      * @return long
      */
-    private static long getFolderSizeRecursively(File directory) {
-        long length = 0;
-        if (directory.listFiles() != null) {
-            for (File file : directory.listFiles()) {
-                if (file.isFile()) {
-                    length += file.length();
+    private fun getFolderSizeRecursively(directory: File): Long {
+        var length: Long = 0
+        if (directory.isDirectory) {
+            for (file in directory.listFiles()) {
+                length += if (file.isFile) {
+                    file.length()
                 } else {
-                    length += getFolderSizeRecursively(file);
+                    getFolderSizeRecursively(file)
                 }
             }
         }
-
-        return length;
+        return length
     }
 
     /**
      * Delete items of the cleaning paths
      * @param cleaningPaths ArrayList<String>
-     */
-    public static void deleteExplorer(ArrayList<String> cleaningPaths) {
-        File directory;
-
-        for (String path : cleaningPaths) {
-            directory = new File(PrefsUtility.INSTANCE.getExplorerRootPath() + "/" + path);
+    </String> */
+    @JvmStatic
+    fun deleteExplorer(cleaningPaths: ArrayList<String>) {
+        var directory: File
+        for (path in cleaningPaths) {
+            directory = File(getExplorerRootPath().toString() + "/" + path)
             if (directory.exists()) {
-                if (directory.isDirectory()) {
-                    deleteFiles(directory.listFiles());
+                if (directory.isDirectory) {
+                    deleteFiles(directory.listFiles())
                 }
 
                 //delete the file or the empty directory too
-                directory.delete();
+                directory.delete()
             }
         }
     }
@@ -103,10 +100,11 @@ public class ExplorerUtility {
      * Search through directories and delete recursively
      * @param files array of files and directories to be deleted
      */
-    private static synchronized void deleteFiles(File[] files) {
+    @Synchronized
+    private fun deleteFiles(files: Array<File>?) {
         if (files != null) {
-            for (File file : files) {
-                recursiveDelete(file);
+            for (file in files) {
+                recursiveDelete(file)
             }
         }
     }
@@ -115,17 +113,17 @@ public class ExplorerUtility {
      * Search through directory and delete its files recursively
      * @param file directory to iterate recursively or file
      */
-    private static synchronized void recursiveDelete(File file) {
+    @Synchronized
+    private fun recursiveDelete(file: File) {
         if (file.exists()) {
-            if (file.isDirectory()) {
-                for (File f : file.listFiles()) {
+            if (file.isDirectory) {
+                for (f in file.listFiles()) {
                     //continue to delete files recursively
-                    recursiveDelete(f);
+                    recursiveDelete(f)
                 }
             }
             //delete file
-            file.delete();
+            file.delete()
         }
     }
-
 }
