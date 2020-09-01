@@ -43,9 +43,6 @@ import java.text.Collator
 import java.util.*
 
 
-/**
- * Created by Ferid Cafer on 11/16/2015.
- */
 class MainActivity : AppCompatActivity() {
     private var context: Context? = null
 
