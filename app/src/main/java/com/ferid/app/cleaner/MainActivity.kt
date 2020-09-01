@@ -77,7 +77,7 @@ class MainActivity : AppCompatActivity() {
             adapterExplorer!!.notifyDataSetChanged()
 
             //update total folder size
-            getFolderSizeTask = GetFolderSizeTask()
+            getFolderSizeTask = GetFolderSizeTask{}
             getFolderSizeTask!!.setListener(sizeListener)
             getFolderSizeTask!!.execute(cleaningPaths)
         }
@@ -96,7 +96,7 @@ class MainActivity : AppCompatActivity() {
     private fun setOnClickListener() {
         actionButtonDelete!!.setOnClickListener {
             if (cleaningPaths.isNotEmpty()) {
-                cleanFoldersTask = CleanFoldersTask()
+                cleanFoldersTask = CleanFoldersTask{}
                 cleanFoldersTask!!.setListener(object : CleaningListener {
                     override fun onCompleted() {
                         explorerList()
@@ -160,7 +160,7 @@ class MainActivity : AppCompatActivity() {
             explorer.isToClean = false
         }
         adapterExplorer!!.notifyDataSetChanged()
-        getFolderSizeTask = GetFolderSizeTask()
+        getFolderSizeTask = GetFolderSizeTask{}
         getFolderSizeTask!!.setListener(sizeListener)
         getFolderSizeTask!!.execute(cleaningPaths)
     }
@@ -201,7 +201,7 @@ class MainActivity : AppCompatActivity() {
             adapterExplorer!!.notifyDataSetChanged()
 
             //update total cleaning folder size
-            getFolderSizeTask = GetFolderSizeTask()
+            getFolderSizeTask = GetFolderSizeTask{}
             getFolderSizeTask!!.setListener(sizeListener)
             getFolderSizeTask!!.execute(cleaningPaths)
             Handler().postDelayed({ actionButtonDelete.show() }, 800)
