@@ -21,7 +21,6 @@ import android.os.Handler
 import android.view.Menu
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ferid.app.cleaner.adapter.ExplorerAdapter
 import com.ferid.app.cleaner.enums.SortingType
@@ -73,6 +72,7 @@ class MainActivity : AppCompatActivity() {
 
         //list
         adapterExplorer = ExplorerAdapter(arrayListExplorer) {
+            it.isToClean = !it.isToClean
             setCleaningPaths()
             adapterExplorer!!.notifyDataSetChanged()
 
@@ -86,12 +86,6 @@ class MainActivity : AppCompatActivity() {
         listExplorer.setHasFixedSize(true)
 
         setOnClickListener()
-
-        swipeRefreshLayout.setColorSchemeColors(
-                ContextCompat.getColor(this, R.color.colorAccent))
-        swipeRefreshLayout.setOnRefreshListener{
-            explorerList()
-        }
 
         explorerList()
     }
@@ -107,13 +101,13 @@ class MainActivity : AppCompatActivity() {
                     override fun onCompleted() {
                         explorerList()
 
-                        Snackbar.make(swipeRefreshLayout!!, getString(R.string.cleaned),
+                        Snackbar.make(listExplorer!!, getString(R.string.cleaned),
                                 Snackbar.LENGTH_SHORT).show()
                     }
                 })
                 cleanFoldersTask!!.execute(cleaningPaths)
             } else {
-                Snackbar.make(swipeRefreshLayout!!, getString(R.string.nothing_to_clean),
+                Snackbar.make(listExplorer!!, getString(R.string.nothing_to_clean),
                         Snackbar.LENGTH_SHORT).show()
             }
         }
@@ -194,7 +188,6 @@ class MainActivity : AppCompatActivity() {
     private fun explorerList() {
         Handler().post {
             Handler().post { actionButtonDelete.hide() }
-            swipeRefreshLayout.isRefreshing = true
             allPaths!!.clear()
             val root = getExplorerRootPath()
             if (root!!.exists()) {
@@ -211,7 +204,6 @@ class MainActivity : AppCompatActivity() {
             getFolderSizeTask = GetFolderSizeTask()
             getFolderSizeTask!!.setListener(sizeListener)
             getFolderSizeTask!!.execute(cleaningPaths)
-            swipeRefreshLayout!!.isRefreshing = false
             Handler().postDelayed({ actionButtonDelete.show() }, 800)
         }
     }
@@ -245,7 +237,7 @@ class MainActivity : AppCompatActivity() {
     /**
      * Alphabetical order
      */
-    internal inner class ExplorerComparator : Comparator<Explorer> {
+    internal class ExplorerComparator : Comparator<Explorer> {
         //prepare utf-8
         var collator = Collator.getInstance(Locale("UTF-8"))
         override fun compare(e1: Explorer, e2: Explorer): Int {
@@ -256,9 +248,9 @@ class MainActivity : AppCompatActivity() {
     /**
      * Size order
      */
-    internal inner class SizeComparator : Comparator<Explorer> {
+    internal class SizeComparator : Comparator<Explorer> {
         override fun compare(e1: Explorer, e2: Explorer): Int {
-            return java.lang.Double.compare(e2.size, e1.size)
+            return e2.size.compareTo(e1.size)
         }
     }
 

@@ -23,7 +23,6 @@ import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
-import com.ferid.app.cleaner.SplashActivity
 
 class SplashActivity : AppCompatActivity() {
 

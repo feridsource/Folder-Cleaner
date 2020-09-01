@@ -14,21 +14,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/swipeRefreshLayout"
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/listExplorer"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/listExplorer"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingTop="@dimen/margin_default"
-            android:paddingBottom="@dimen/margin_huge"
-            android:clipToPadding="false"/>
-
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+        android:paddingTop="@dimen/margin_default"
+        android:paddingBottom="@dimen/margin_huge"
+        android:clipToPadding="false"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/actionButtonDelete"
