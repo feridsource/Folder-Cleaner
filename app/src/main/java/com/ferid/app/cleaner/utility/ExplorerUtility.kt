@@ -20,7 +20,7 @@ import java.io.File
 import java.util.*
 
 /**
- * Created by Ferid Cafer on 11/16/2015.
+ * Files explorer utility
  */
 object ExplorerUtility {
     /**
