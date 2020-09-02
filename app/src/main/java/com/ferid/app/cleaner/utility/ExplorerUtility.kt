@@ -48,7 +48,7 @@ object ExplorerUtility {
      */
     @JvmStatic
     fun getFileSize(file: File): Double {
-        val bytes: Double
+        var bytes: Double = 0.0
         bytes = if (file.isDirectory) {
             getFolderSizeRecursively(file).toDouble() //get folder size
         } else {
